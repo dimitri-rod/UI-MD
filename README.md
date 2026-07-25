@@ -13,9 +13,10 @@ You write this:
 ```
 > Card
 >> [Click Here](signup)
+>> [Follow us](https://twitter.com/acme)
 ```
 
-That's a container with a link in it. `>>` just means "one level deeper." That's most of the language.
+That's a container with two links in it. `>>` just means "one level deeper." `signup` with no `https://` is an internal page — a screen elsewhere in the same product. A full URL is external. That's most of the language.
 
 Hand this to a model along with the rules file below, and it builds the actual screen (React, HTML, Figma — whatever you ask for).
 
