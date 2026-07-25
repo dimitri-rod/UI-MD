@@ -1,6 +1,10 @@
 # UI-MD
 
-A simple way to describe a screen in plain text, then tell an AI model to build it — and later point at one exact piece of that screen to change it, without describing it in a paragraph.
+Designing with LLMs is annoying.
+
+Saying which layer a component belongs in, or that this one specific button needs a different font, takes a paragraph — and the model still guesses wrong.
+
+UI-MD mixes Markdown and basic CSS into a stupidly simple dictionary, so designers and machines can point at the same thing and mean the same thing.
 
 ## The idea, in one example
 
@@ -8,7 +12,7 @@ You write this:
 
 ```
 > Card
->> [Click Here](/signup)
+>> [Click Here](signup)
 ```
 
 That's a container with a link in it. `>>` just means "one level deeper." That's most of the language.
@@ -20,7 +24,7 @@ Hand this to a model along with the rules file below, and it builds the actual s
 Once a screen is written, you can point at any single piece of it by walking down the same path:
 
 ```
-Card >> [Click Here](/signup)
+Card >> [Click Here](signup)
 ```
 
 "The link, inside the card." No need to describe it — just read the path off the file you already have.
@@ -38,7 +42,7 @@ Card >> [Click Here](/signup)
 
 1. Give a model [`UI-MD_skill.md`](assets/UI-MD_skill.md) as its system instructions.
 2. Write your screen in UI-MD.
-3. To edit one thing later, give the model [`UI-MD_pointer.md`](assets/UI-MD_pointer.md) plus a path to what you want changed, e.g. `Card >> [Click Here](/signup)`, and say what should change.
+3. To edit one thing later, give the model [`UI-MD_pointer.md`](assets/UI-MD_pointer.md) plus a path to what you want changed, e.g. `Card >> [Click Here](signup)`, and say what should change.
 
 ## The shapes, quickly
 

@@ -26,6 +26,6 @@ This is a stupidly simple skill. The whole dictionary fits below — if you're i
 *   `[Label]` — button that does something in place (submit, toggle, open) but doesn't go anywhere. Nothing follows the closing bracket — that's what tells it apart from a link.
 
 **Links & Media**
-*   `[Label](url)` — anything that navigates, styled as a button or not. Use a relative path for an internal page (`/pricing`), a full URL for external (`https://...`). Brackets immediately followed by `(url)`, no space.
+*   `[Label](url)` — anything that navigates, styled as a button or not. For an internal page, just the bare page name, no leading slash (`pricing`, not `/pricing` — a leading slash gets read as a command); a full URL for external (`https://...`). Brackets immediately followed by `(url)`, no space.
 *   `![alt text](image.jpg)` — image.
 *   `:icon-name:` — icon.

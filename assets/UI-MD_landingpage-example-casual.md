@@ -11,7 +11,7 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 >> [Features](#features)
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
->> [Get Started](/signup)
+>> [Get Started](signup)
 *this one should pop, it's the button that matters*
 
 > Hero
@@ -20,7 +20,7 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 *huge, feels like a statement*
 >> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
 *smaller, softer, kind of faded so it doesn't fight the headline*
->> [Start Free Trial](/signup)
+>> [Start Free Trial](signup)
 *make it feel exciting, maybe it glows a little when you hover*
 >> ![Preview of a screen built in UI-MD](preview.png)
 *nice and soft, rounded, floating a bit*
@@ -37,20 +37,20 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 *totally normal, nothing special going on*
 >>> ### Developer
 >>> Free forever, for one project.
->>> [Get Started](/signup)
+>>> [Get Started](signup)
 
 >> Pro Card
 *this is the popular one, make it stand out, maybe a little bigger and glowing*
 >>> ### Pro
 >>> $29/month, unlimited projects.
->>> [Get Started](/signup)
+>>> [Get Started](signup)
 *loud, this is the one people should pick*
 
 >> Enterprise Card
 *chill, understated, this one's for the big spenders who don't need convincing*
 >>> ### Enterprise
 >>> Custom pricing, talk to sales.
->>> [Contact Sales](/contact)
+>>> [Contact Sales](contact)
 *quiet button, not fighting for attention*
 
 > Footer
