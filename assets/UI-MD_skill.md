@@ -29,3 +29,6 @@ This is a stupidly simple skill. The whole dictionary fits below — if you're i
 *   `[Label](url)` — anything that navigates, styled as a button or not. For an internal page, just the bare page name, no leading slash (`pricing`, not `/pricing` — a leading slash gets read as a command); a full URL for external (`https://...`). Brackets immediately followed by `(url)`, no space.
 *   `![alt text](image.jpg)` — image.
 *   `:icon-name:` — icon.
+
+**Dev Notes**
+*   `// note` — Context for you, not for the screen. Read it, never render it.

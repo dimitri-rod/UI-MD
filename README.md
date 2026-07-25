@@ -54,6 +54,7 @@ Card >> [Click Here](signup)
 - `[Label](url)` — link
 - `![alt text](image.jpg)` — image
 - `:icon-name:` — icon
+- `// note` — context for the model, never shown on screen
 - `*local instructions*` — a note attached to the thing above or below it
 - `**global instructions**` — a note that applies to the whole screen
 
