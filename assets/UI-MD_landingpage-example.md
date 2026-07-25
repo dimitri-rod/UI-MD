@@ -10,16 +10,16 @@
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
 >> [Get Started](signup)
-*background Accent 1, stands out from the rest*
+*background $Color,Accent 1$, stands out from the rest*
 
 > Hero
 *centered, lots of padding*
 >> # Design at the speed of thought.
-*huge, gradient Accent 1 to Accent 2*
+*huge, gradient $Color,Accent 1$ to $Color,Accent 2$*
 >> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
 *softer, faded*
 >> [Start Free Trial](signup)
-*background Accent 2, glows on hover*
+*background $Color,Accent 2$, glows on hover*
 >> ![Preview of a screen built in UI-MD](preview.png)
 *rounded corners, shadow*
 
@@ -30,6 +30,7 @@
 >> <x> Monthly
 >> <> Annual, save 20%
 *pill-shaped toggle*
+// switching to Annual should update all three card prices to reflect the 20% discount
 
 >> Developer Card
 *plain card*
@@ -38,11 +39,11 @@
 >>> [Get Started](signup)
 
 >> Pro Card
-*stands out — border Accent 1, scaled up a little*
+*stands out — border $Color,Accent 1$, scaled up a little*
 >>> ### Pro
 >>> $29/month, unlimited projects.
 >>> [Get Started](signup)
-*solid button, background Accent 1*
+*solid button, background $Color,Accent 1$*
 
 >> Enterprise Card
 *understated*

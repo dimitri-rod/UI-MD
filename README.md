@@ -37,6 +37,7 @@ Card >> [Click Here](signup)
 | [`assets/UI-MD_skill.md`](assets/UI-MD_skill.md) | The rules for writing a screen. Give this to the model as its instructions. |
 | [`assets/UI-MD_pointer.md`](assets/UI-MD_pointer.md) | The rules for pointing at one exact thing inside a screen you already wrote. |
 | [`assets/UI-MD_landingpage-example.md`](assets/UI-MD_landingpage-example.md) | A full example — a real landing page written in UI-MD, so you can see the rules in use. |
+| [`assets/UI-MD_landingpage-example-casual.md`](assets/UI-MD_landingpage-example-casual.md) | The same page, written casually instead of in CSS-speak — proof the tidy version is optional. |
 
 ## Using it
 
@@ -55,12 +56,77 @@ Card >> [Click Here](signup)
 - `![alt text](image.jpg)` — image
 - `:icon-name:` — icon
 - `// note` — context for the model, never shown on screen
+- `$Token$` — pull an exact value from your design system, e.g. `$Border Width,200$`
 - `*local instructions*` — a note attached to the thing above or below it
 - `**global instructions**` — a note that applies to the whole screen
 
+## A full example
+
+A real landing page, written entirely in UI-MD:
+
+```
+> Navbar
+*spread out, logo left, links and button right, sticky top*
+>> UI-MD
+*bold wordmark*
+>> [Features](#features)
+>> [Pricing](#pricing)
+>> [FAQ](#faq)
+>> [Get Started](signup)
+*background $Color,Accent 1$, stands out from the rest*
+
+> Hero
+*centered, lots of padding*
+>> # Design at the speed of thought.
+*huge, gradient $Color,Accent 1$ to $Color,Accent 2$*
+>> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
+*softer, faded*
+>> [Start Free Trial](signup)
+*background $Color,Accent 2$, glows on hover*
+>> ![Preview of a screen built in UI-MD](preview.png)
+*rounded corners, shadow*
+
+> Pricing Section
+*centered, stacked, generous padding*
+>> ## Simple, transparent pricing.
+*bold, centered*
+>> <x> Monthly
+>> <> Annual, save 20%
+*pill-shaped toggle*
+// switching to Annual should update all three card prices to reflect the 20% discount
+
+>> Developer Card
+*plain card*
+>>> ### Developer
+>>> Free forever, for one project.
+>>> [Get Started](signup)
+
+>> Pro Card
+*stands out — border $Color,Accent 1$, scaled up a little*
+>>> ### Pro
+>>> $29/month, unlimited projects.
+>>> [Get Started](signup)
+*solid button, background $Color,Accent 1$*
+
+>> Enterprise Card
+*understated*
+>>> ### Enterprise
+>>> Custom pricing, talk to sales.
+>>> [Contact Sales](contact)
+*outline button*
+
+> Footer
+*spread out, quiet, faded*
+>> Acme Corp © 2026. All rights reserved.
+>> :twitter: :github: :discord:
+*spaced out*
+```
+
+Same page, written casually instead — see [UI-MD_landingpage-example-casual.md](assets/UI-MD_landingpage-example-casual.md).
+
 ## One thing to know
 
-The shapes above are the only part that's really "UI-MD." What goes *inside* a `*rule*` is just plain CSS-ish description — things like `padding 32px`, `background Accent 1`, `align center`, `on hover: translate Y -4px`. You don't need to write real CSS syntax, but knowing the basic vocabulary helps you say what you mean instead of hoping the model guesses right.
+The shapes above are the only part that's really "UI-MD." What goes *inside* a `*rule*` is just plain CSS-ish description — things like `padding 32px`, `background $Color,Accent 1$`, `align center`, `on hover: translate Y -4px`. You don't need to write real CSS syntax, but knowing the basic vocabulary helps you say what you mean instead of hoping the model guesses right.
 
 The ones that come up constantly:
 
@@ -83,7 +149,7 @@ If you don't know the "real" word, don't stop to look it up — say it like you 
 | `*keep it in the middle*` | `*align center*` |
 | `*give them some breathing room*` | `*gap 16px*` |
 | `*round the corners a bit*` | `*rounded 12px*` |
-| `*make it red*` | `*background Accent 2*` |
+| `*make it red*` | `*background $Color,Accent 2$*` |
 | `*make the text lighter, kind of faded*` | `*opacity 70%*` |
 | `*when someone clicks it, save the form*` | `*on click: save*` |
 | `*make it lift up a little when you hover over it*` | `*on hover: translate Y -4px*` |

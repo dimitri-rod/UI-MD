@@ -32,6 +32,7 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 >> <x> Monthly
 >> <> Annual, save 20%
 *little pill-shaped switch*
+// heads up: flipping to Annual needs to update all three prices with the discount
 
 >> Developer Card
 *totally normal, nothing special going on*
