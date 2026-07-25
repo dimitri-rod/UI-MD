@@ -63,67 +63,137 @@ Card >> [Click Here](signup)
 
 ## A full example
 
-A real landing page, written entirely in UI-MD:
+The same landing page, two ways. First, precise — real CSS-ish values, nothing left to guess:
 
 ```
 > Navbar
-*spread out, logo left, links and button right, sticky top*
+*align-center, justify-space-between, padding: 20px 5%, position: sticky-top, background: $Color,Background$*
 >> UI-MD
-*bold wordmark*
+*font-weight: 700, font-size: 20px*
 >> [Features](#features)
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
+*variant: ghost, font-size: 14px*
 >> [Get Started](signup)
-*background $Color,Accent 1$, stands out from the rest*
+*background: $Color,Accent 1$, padding: 8px 20px, border-radius: 8px*
 
 > Hero
-*centered, lots of padding*
+*align-center, justify-center, text-align: center, padding: 120px 5%, max-width: 800px, margin: 0 auto*
 >> # Design at the speed of thought.
-*huge, gradient $Color,Accent 1$ to $Color,Accent 2$*
+*font-size: 80px, background: linear-gradient(90deg, $Color,Accent 1$, $Color,Accent 2$), background-clip: text*
 >> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
-*softer, faded*
+*font-size: 20px, opacity: 70%, margin-top: 16px*
 >> [Start Free Trial](signup)
-*background $Color,Accent 2$, glows on hover*
+*background: $Color,Accent 2$, padding: 14px 28px, border-radius: 8px, on-hover: box-shadow 0 0 24px $Color,Accent 2$*
 >> ![Preview of a screen built in UI-MD](preview.png)
-*rounded corners, shadow*
+*border-radius: 16px, box-shadow: 0 20px 40px rgba(0,0,0,0.4)*
 
 > Pricing Section
-*centered, stacked, generous padding*
+*align-center, flex-col, padding: 100px 5%*
 >> ## Simple, transparent pricing.
-*bold, centered*
+*font-size: 40px, font-weight: 700, text-align: center*
 >> <x> Monthly
 >> <> Annual, save 20%
-*pill-shaped toggle*
+*border-radius: 999px, padding: 8px*
 // switching to Annual should update all three card prices to reflect the 20% discount
 
 >> Developer Card
-*plain card*
+*background: $Color,Surface$, border-radius: 16px, padding: 40px*
+>>> ### Developer
+*font-size: 24px*
+>>> Free forever, for one project.
+*opacity: 70%, margin: 12px 0*
+>>> [Get Started](signup)
+*width: 100%*
+
+>> Pro Card
+*background: $Color,Surface$, border: 2px solid $Color,Accent 1$, border-radius: 16px, padding: 40px, transform: scale(1.05)*
+>>> ### Pro
+*font-size: 24px*
+>>> $29/month, unlimited projects.
+*opacity: 70%, margin: 12px 0*
+>>> [Get Started](signup)
+*width: 100%, background: $Color,Accent 1$, border-radius: 8px*
+
+>> Enterprise Card
+*background: $Color,Surface$, border-radius: 16px, padding: 40px, opacity: 90%*
+>>> ### Enterprise
+*font-size: 24px*
+>>> Custom pricing, talk to sales.
+*opacity: 70%, margin: 12px 0*
+>>> [Contact Sales](contact)
+*width: 100%, variant: outline, border: 1px solid $Color,Accent 1$*
+
+> Footer
+*align-center, justify-space-between, padding: 60px 5%, border-top: 1px solid $Color,Surface$*
+>> Acme Corp © 2026. All rights reserved.
+*opacity: 50%, font-size: 14px*
+>> :twitter: :github: :discord:
+*gap: 16px, color: $Color,Accent 1$*
+```
+
+Now the dumb version — same structure, every rule swapped for a feeling instead of a property:
+
+```
+> Navbar
+*keep it breezy — logo chilling on the left, stuff floating on the right, stays put when you scroll*
+>> UI-MD
+*confident, like it knows what it's doing*
+>> [Features](#features)
+>> [Pricing](#pricing)
+>> [FAQ](#faq)
+*whisper quiet, just kinda there*
+>> [Get Started](signup)
+*this is the star of the show, make it glow*
+
+> Hero
+*deep breath energy — calm, centered, room to exist*
+>> # Design at the speed of thought.
+*massive, a mic-drop moment, feels alive*
+>> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
+*soft, like a whisper right after the shout*
+>> [Start Free Trial](signup)
+*irresistible, warm, makes you want to click without thinking about it*
+>> ![Preview of a screen built in UI-MD](preview.png)
+*floaty, like it's hovering just above the page*
+
+> Pricing Section
+*calm, spacious, no rush*
+>> ## Simple, transparent pricing.
+*confident and clear, no games*
+>> <x> Monthly
+>> <> Annual, save 20%
+*cute little switch, satisfying to toggle*
+// heads up: flipping to Annual needs to update all three prices with the discount
+
+>> Developer Card
+*chill, no pressure, just here if you need it*
 >>> ### Developer
 >>> Free forever, for one project.
 >>> [Get Started](signup)
 
 >> Pro Card
-*stands out — border $Color,Accent 1$, scaled up a little*
+*the golden child — make everyone want to be here*
 >>> ### Pro
 >>> $29/month, unlimited projects.
 >>> [Get Started](signup)
-*solid button, background $Color,Accent 1$*
+*loud and proud, this is the one*
 
 >> Enterprise Card
-*understated*
+*quietly confident, doesn't need to try hard*
 >>> ### Enterprise
 >>> Custom pricing, talk to sales.
 >>> [Contact Sales](contact)
-*outline button*
+*understated, almost whispering*
 
 > Footer
-*spread out, quiet, faded*
+*fading out gently, like the credits rolling*
 >> Acme Corp © 2026. All rights reserved.
 >> :twitter: :github: :discord:
-*spaced out*
+*tucked away, not asking for attention*
 ```
 
-Same page, written casually instead — see [UI-MD_landingpage-example-casual.md](assets/UI-MD_landingpage-example-casual.md).
+Same layout, same result either way — the model translates it, not you.
 
 ## One thing to know
 

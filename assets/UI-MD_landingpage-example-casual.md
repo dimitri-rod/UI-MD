@@ -1,61 +1,62 @@
 # landingpage_example_casual.md
 
-A "dumb," conversational version of the same landing page from [UI-MD_landingpage-example.md](UI-MD_landingpage-example.md) — same shapes, same structure, but every rule is written the way you'd actually say it out loud instead of in CSS-speak. Proof that the tidy version is optional, not required.
+A "dumb," conversational version of the same landing page from [UI-MD_landingpage-example.md](UI-MD_landingpage-example.md) — same shapes, same structure, but every rule is a feeling instead of a CSS property. Proof that the tidy version is optional, not required.
 
-**Dark mode, moody but fun. Background almost black, cards a shade lighter, text off-white, purple for the main pop, red for the extra loud stuff. Headings clean and structural, body text easy to read.**
+**Dark mode. Moody, confident, a little rebellious. Purple as the main pop, red for the loud stuff. Feels expensive without trying too hard.**
 
 > Navbar
-*spread it out, logo on the left, everything else on the right, sticks to the top when you scroll*
+*keep it breezy — logo chilling on the left, stuff floating on the right, stays put when you scroll*
 >> UI-MD
-*bold, feels like a wordmark*
+*confident, like it knows what it's doing*
 >> [Features](#features)
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
+*whisper quiet, just kinda there*
 >> [Get Started](signup)
-*this one should pop, it's the button that matters*
+*this is the star of the show, make it glow*
 
 > Hero
-*everything centered, lots of room to breathe*
+*deep breath energy — calm, centered, room to exist*
 >> # Design at the speed of thought.
-*huge, feels like a statement*
+*massive, a mic-drop moment, feels alive*
 >> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
-*smaller, softer, kind of faded so it doesn't fight the headline*
+*soft, like a whisper right after the shout*
 >> [Start Free Trial](signup)
-*make it feel exciting, maybe it glows a little when you hover*
+*irresistible, warm, makes you want to click without thinking about it*
 >> ![Preview of a screen built in UI-MD](preview.png)
-*nice and soft, rounded, floating a bit*
+*floaty, like it's hovering just above the page*
 
 > Pricing Section
-*stack everything, center it, give it space above and below*
+*calm, spacious, no rush*
 >> ## Simple, transparent pricing.
-*big, bold, the section's headline moment*
+*confident and clear, no games*
 >> <x> Monthly
 >> <> Annual, save 20%
-*little pill-shaped switch*
+*cute little switch, satisfying to toggle*
 // heads up: flipping to Annual needs to update all three prices with the discount
 
 >> Developer Card
-*totally normal, nothing special going on*
+*chill, no pressure, just here if you need it*
 >>> ### Developer
 >>> Free forever, for one project.
 >>> [Get Started](signup)
 
 >> Pro Card
-*this is the popular one, make it stand out, maybe a little bigger and glowing*
+*the golden child — make everyone want to be here*
 >>> ### Pro
 >>> $29/month, unlimited projects.
 >>> [Get Started](signup)
-*loud, this is the one people should pick*
+*loud and proud, this is the one*
 
 >> Enterprise Card
-*chill, understated, this one's for the big spenders who don't need convincing*
+*quietly confident, doesn't need to try hard*
 >>> ### Enterprise
 >>> Custom pricing, talk to sales.
 >>> [Contact Sales](contact)
-*quiet button, not fighting for attention*
+*understated, almost whispering*
 
 > Footer
-*spread out, quiet, feels like an afterthought on purpose*
+*fading out gently, like the credits rolling*
 >> Acme Corp © 2026. All rights reserved.
 >> :twitter: :github: :discord:
-*just the icons, nothing fancy, a little spaced out*
+*tucked away, not asking for attention*
