@@ -1,0 +1,87 @@
+# UI-MD
+
+A simple way to describe a screen in plain text, then tell an AI model to build it — and later point at one exact piece of that screen to change it, without describing it in a paragraph.
+
+## The idea, in one example
+
+You write this:
+
+```
+> Card
+>> [Click Here](/signup)
+```
+
+That's a container with a link in it. `>>` just means "one level deeper." That's most of the language.
+
+Hand this to a model along with the rules file below, and it builds the actual screen (React, HTML, Figma — whatever you ask for).
+
+## Later, when you want to change one thing
+
+Once a screen is written, you can point at any single piece of it by walking down the same path:
+
+```
+Card >> [Click Here](/signup)
+```
+
+"The link, inside the card." No need to describe it — just read the path off the file you already have.
+
+## What's in this repo
+
+| File | What it's for |
+|---|---|
+| [`assets/UI-MD_manifest.md`](assets/UI-MD_manifest.md) | Why this exists — the short pitch. Read this first. |
+| [`assets/UI-MD_skill.md`](assets/UI-MD_skill.md) | The rules for writing a screen. Give this to the model as its instructions. |
+| [`assets/UI-MD_pointer.md`](assets/UI-MD_pointer.md) | The rules for pointing at one exact thing inside a screen you already wrote. |
+| [`assets/UI-MD_landingpage-example.md`](assets/UI-MD_landingpage-example.md) | A full example — a real landing page written in UI-MD, so you can see the rules in use. |
+
+## Using it
+
+1. Give a model [`UI-MD_skill.md`](assets/UI-MD_skill.md) as its system instructions.
+2. Write your screen in UI-MD.
+3. To edit one thing later, give the model [`UI-MD_pointer.md`](assets/UI-MD_pointer.md) plus a path to what you want changed, e.g. `Card >> [Click Here](/signup)`, and say what should change.
+
+## The shapes, quickly
+
+- `>` `>>` `>>>` — how deep something is nested (max 3 levels)
+- `# H1` / `## H2` / `### H3` — headings
+- `[x] Label` / `[ ] Label` — checkbox, checked / unchecked
+- `<x> Label` / `<> Label` — radio, selected / unselected
+- `[Label]` — button
+- `[Label](url)` — link
+- `![alt text](image.jpg)` — image
+- `:icon-name:` — icon
+- `*local instructions*` — a note attached to the thing above or below it
+- `**global instructions**` — a note that applies to the whole screen
+
+## One thing to know
+
+The shapes above are the only part that's really "UI-MD." What goes *inside* a `*rule*` is just plain CSS-ish description — things like `padding 32px`, `background Accent 1`, `align center`, `on hover: translate Y -4px`. You don't need to write real CSS syntax, but knowing the basic vocabulary helps you say what you mean instead of hoping the model guesses right.
+
+The ones that come up constantly:
+
+- **Spacing:** padding, margin, gap
+- **Layout:** align, center, stack, flex-row / flex-col, width, overflow
+- **Look:** background, color, border, rounded, shadow, opacity
+- **Text:** font, weight, uppercase, text size
+- **Motion:** on hover / on click / on load, transform, translate, rotate, animate, duration, infinite
+
+If a term isn't in that list, plain English usually works fine. The shapes are the strict part of the language; the rules are closer to talking, not coding.
+
+## Or just say it however you'd normally say it
+
+If you don't know the "real" word, don't stop to look it up — say it like you would out loud. Both sides below work the same:
+
+| What you'd naturally say | The tidier version |
+|---|---|
+| `*make it bigger*` | `*padding 24px, text 20px*` |
+| `*push it over to the right*` | `*align right*` |
+| `*keep it in the middle*` | `*align center*` |
+| `*give them some breathing room*` | `*gap 16px*` |
+| `*round the corners a bit*` | `*rounded 12px*` |
+| `*make it red*` | `*background Accent 2*` |
+| `*make the text lighter, kind of faded*` | `*opacity 70%*` |
+| `*when someone clicks it, save the form*` | `*on click: save*` |
+| `*make it lift up a little when you hover over it*` | `*on hover: translate Y -4px*` |
+| `*fade it in when the page loads*` | `*on load: animate opacity, 1s*` |
+
+Same result either way — the model translates it, not you. The tidier version is just faster to type once it's second nature. Start on the left side of the table and move right whenever it feels natural, not before.
