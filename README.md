@@ -53,7 +53,7 @@ Card >> [Click Here](signup)
 - `>` `>>` `>>>` — how deep something is nested (max 3 levels)
 - - `# H1` / `## H2` / `### H3` — headings
 - `---` — divider, on its own line
-- - `[Button]` — button
+- `[Button]` — button
 - `[x] Item` / `[ ] Item` — checked / unchecked (checkbox or radio — add `*single-select*` on the group for radio-style behavior)
 - `<Label>` — labels, tags and filter chips (toggles active on click)
 - `<> Placeholder` — text input
