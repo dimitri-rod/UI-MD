@@ -46,8 +46,10 @@ Card >> [Click Here](signup)
 2. Write your screen in UI-MD.
 3. To edit one thing later, give the model [`UI-MD_pointer.md`](assets/UI-MD_pointer.md) plus a path to what you want changed, e.g. `Card >> [Click Here](signup)`, and say what should change.
 
-## The shapes, quickly
+## Shapes and characters, quickly
 
+- `*local instructions*` — a note attached to the thing above or below it
+- `**global instructions**` — a note that applies to the whole screen
 - `>` `>>` `>>>` — how deep something is nested (max 3 levels)
 - `> Component` — the name after `>` can be anything: a section, a container, a card, an accordion, a banner, whatever you're describing. There's no fixed list of container types, just a name and a depth.
 - `---` — divider, on its own line
@@ -62,8 +64,6 @@ Card >> [Click Here](signup)
 - `:icon-name:` — icon
 - `// note` — context for the model, never shown on screen
 - `$Token$` — pull an exact value from your design system, e.g. `$Border Width,200$`
-- `*local instructions*` — a note attached to the thing above or below it
-- `**global instructions**` — a note that applies to the whole screen
 
 ## A full example
 
