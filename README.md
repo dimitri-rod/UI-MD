@@ -53,11 +53,14 @@ Card >> [Click Here](signup)
 - `>` `>>` `>>>` — how deep something is nested (max 3 levels)
 - - `# H1` / `## H2` / `### H3` — headings
 - `---` — divider, on its own line
-- `[Button]` — button
-- `[x] Item` / `[ ] Item` — checked / unchecked (checkbox or radio — add `*single-select*` on the group for radio-style behavior)
-- `<Label>` — labels, tags and filter chips (toggles active on click)
-- `<> Placeholder` — text input
 - `[Link](url)` — link
+- `[[Button]]` — button
+- `[[Button]](home)` — button with internal link
+- `[[Button]](http://link.com)` — button with external link
+- `[x] Item` / `[ ] Item` — checked / unchecked (checkbox or radio — add `*single-select*` on the group for radio-style behavior)
+- `<Label>` — labels amd tags
+- `<Label>Filter` — filter chips (toggles active on click)
+- `<> Placeholder` — text input
 - `![alt text](image.jpg)` — image
 - `:icon-name:` — icon
 - `// note` — context for the model, never shown on screen
