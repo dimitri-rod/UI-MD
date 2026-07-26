@@ -49,10 +49,12 @@ Card >> [Click Here](signup)
 ## The shapes, quickly
 
 - `>` `>>` `>>>` — how deep something is nested (max 3 levels)
+- `---` — divider, on its own line
 - `# H1` / `## H2` / `### H3` — headings
-- `[x] Label` / `[ ] Label` — checkbox, checked / unchecked
-- `<x> Label` / `<> Label` — radio, selected / unselected
+- `[x] Label` / `[ ] Label` — checked / unchecked (checkbox or radio — add `*single-select*` on the group for radio-style behavior)
 - `[Label]` — button
+- `<Label>` — filter chip (toggles active on click)
+- `<> Placeholder` — text input
 - `[Label](url)` — link
 - `![alt text](image.jpg)` — image
 - `:icon-name:` — icon
@@ -92,9 +94,9 @@ The same landing page, two ways. First, precise — real CSS-ish values, nothing
 *align-center, flex-col, padding: 100px 5%*
 >> ## Simple, transparent pricing.
 *font-size: 40px, font-weight: 700, text-align: center*
->> <x> Monthly
->> <> Annual, save 20%
-*border-radius: 999px, padding: 8px*
+>> [x] Monthly
+>> [ ] Annual, save 20%
+*single-select, border-radius: 999px, padding: 8px*
 // switching to Annual should update all three card prices to reflect the 20% discount
 
 >> Developer Card
@@ -123,6 +125,18 @@ The same landing page, two ways. First, precise — real CSS-ish values, nothing
 *opacity: 70%, margin: 12px 0*
 >>> [Contact Sales](contact)
 *width: 100%, variant: outline, border: 1px solid $Color,Accent 1$*
+
+> FAQ Section
+*align-center, flex-col, padding: 80px 5%*
+>> ## Frequently asked questions.
+*font-size: 32px, font-weight: 700, text-align: center*
+>> <> Search questions...
+*width: 400px, margin: 24px 0, padding: 12px 16px, border-radius: 8px, background: $Color,Surface$*
+>> <All>
+>> <Billing>
+>> <Setup>
+>> <API>
+*pill-shaped, gap: 12px, active one gets background $Color,Accent 1$*
 
 > Footer
 *align-center, justify-space-between, padding: 60px 5%, border-top: 1px solid $Color,Surface$*
@@ -161,9 +175,9 @@ Now the dumb version — same structure, every rule swapped for a feeling instea
 *calm, spacious, no rush*
 >> ## Simple, transparent pricing.
 *confident and clear, no games*
->> <x> Monthly
->> <> Annual, save 20%
-*cute little switch, satisfying to toggle*
+>> [x] Monthly
+>> [ ] Annual, save 20%
+*pick one — cute little switch, satisfying to toggle*
 // heads up: flipping to Annual needs to update all three prices with the discount
 
 >> Developer Card
@@ -185,6 +199,18 @@ Now the dumb version — same structure, every rule swapped for a feeling instea
 >>> Custom pricing, talk to sales.
 >>> [Contact Sales](contact)
 *understated, almost whispering*
+
+> FAQ Section
+*calm, centered, breathing room*
+>> ## Frequently asked questions.
+*clear, confident, no fluff*
+>> <> Search questions...
+*simple, inviting, not demanding*
+>> <All>
+>> <Billing>
+>> <Setup>
+>> <API>
+*little chips, satisfying to tap, the picked one lights up*
 
 > Footer
 *fading out gently, like the credits rolling*

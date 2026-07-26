@@ -28,9 +28,9 @@
 *align-center, flex-col, padding: 100px 5%*
 >> ## Simple, transparent pricing.
 *font-size: 40px, font-weight: 700, text-align: center*
->> <x> Monthly
->> <> Annual, save 20%
-*border-radius: 999px, padding: 8px*
+>> [x] Monthly
+>> [ ] Annual, save 20%
+*single-select, border-radius: 999px, padding: 8px*
 // switching to Annual should update all three card prices to reflect the 20% discount
 
 >> Developer Card
@@ -59,6 +59,18 @@
 *opacity: 70%, margin: 12px 0*
 >>> [Contact Sales](contact)
 *width: 100%, variant: outline, border: 1px solid $Color,Accent 1$*
+
+> FAQ Section
+*align-center, flex-col, padding: 80px 5%*
+>> ## Frequently asked questions.
+*font-size: 32px, font-weight: 700, text-align: center*
+>> <> Search questions...
+*width: 400px, margin: 24px 0, padding: 12px 16px, border-radius: 8px, background: $Color,Surface$*
+>> <All>
+>> <Billing>
+>> <Setup>
+>> <API>
+*pill-shaped, gap: 12px, active one gets background $Color,Accent 1$*
 
 > Footer
 *align-center, justify-space-between, padding: 60px 5%, border-top: 1px solid $Color,Surface$*

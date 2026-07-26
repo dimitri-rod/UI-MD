@@ -14,16 +14,18 @@ This is a stupidly simple skill. The whole dictionary fits below — if you're i
 
 **Structure**
 *   `>` `>>` `>>>` — nesting depth. Max 3 levels.
+*   `---` — divider. On its own line, three bare hyphens, nothing else. The one primitive with no label, because there's nothing to attach a rule to.
 
 **Text**
 *   `# H1` / `## H2` / `### H3` — heading levels.
 
 **Selection**
-*   `[x] Label` / `[ ] Label` — checkbox, checked / unchecked.
-*   `<x> Label` / `<> Label` — radio, selected / unselected.
+*   `[x] Label` / `[ ] Label` — checked / unchecked. Covers both checkbox and radio — there's no separate radio shape. If only one in the group can be checked at a time, say so with a `*single-select*` rule on the group; otherwise it's independent, like a normal checkbox.
 
 **Action**
 *   `[Label]` — button that does something in place (submit, toggle, open) but doesn't go anywhere. Nothing follows the closing bracket — that's what tells it apart from a link.
+*   `<Label>` — filter chip. Clicking it toggles it on. A `*rule*` shows it's currently active, e.g. `*active, background $Color,Accent 1$*` — no rule means it's off.
+*   `<> Placeholder` — text input. Empty brackets, placeholder text outside — same pattern as `[ ] Label`, just angle brackets instead of square.
 
 **Links & Media**
 *   `[Label](url)` — anything that navigates, styled as a button or not. Three forms: bare page name for an internal page (`pricing`, not `/pricing` — a leading slash gets read as a command), `#section-name` to jump to a spot on the same page, or a full URL for external (`https://...`). Brackets immediately followed by `(url)`, no space.

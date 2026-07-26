@@ -30,9 +30,9 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 *calm, spacious, no rush*
 >> ## Simple, transparent pricing.
 *confident and clear, no games*
->> <x> Monthly
->> <> Annual, save 20%
-*cute little switch, satisfying to toggle*
+>> [x] Monthly
+>> [ ] Annual, save 20%
+*pick one — cute little switch, satisfying to toggle*
 // heads up: flipping to Annual needs to update all three prices with the discount
 
 >> Developer Card
@@ -54,6 +54,18 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 >>> Custom pricing, talk to sales.
 >>> [Contact Sales](contact)
 *understated, almost whispering*
+
+> FAQ Section
+*calm, centered, breathing room*
+>> ## Frequently asked questions.
+*clear, confident, no fluff*
+>> <> Search questions...
+*simple, inviting, not demanding*
+>> <All>
+>> <Billing>
+>> <Setup>
+>> <API>
+*little chips, satisfying to tap, the picked one lights up*
 
 > Footer
 *fading out gently, like the credits rolling*
