@@ -10,7 +10,7 @@
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
 *variant: ghost, font-size: 14px*
->> [Get Started](signup)
+>> [[Get Started]](signup)
 *background: $Color,Accent 1$, padding: 8px 20px, border-radius: 8px*
 
 > Hero
@@ -19,7 +19,7 @@
 *font-size: 80px, background: linear-gradient(90deg, $Color,Accent 1$, $Color,Accent 2$), background-clip: text*
 >> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
 *font-size: 20px, opacity: 70%, margin-top: 16px*
->> [Start Free Trial](signup)
+>> [[Start Free Trial]](signup)
 *background: $Color,Accent 2$, padding: 14px 28px, border-radius: 8px, on-hover: box-shadow 0 0 24px $Color,Accent 2$*
 >> ![Preview of a screen built in UI-MD](preview.png)
 *border-radius: 16px, box-shadow: 0 20px 40px rgba(0,0,0,0.4)*
@@ -39,7 +39,7 @@
 *font-size: 24px*
 >>> Free forever, for one project.
 *opacity: 70%, margin: 12px 0*
->>> [Get Started](signup)
+>>> [[Get Started]](signup)
 *width: 100%*
 
 >> Pro Card
@@ -48,7 +48,7 @@
 *font-size: 24px*
 >>> $29/month, unlimited projects.
 *opacity: 70%, margin: 12px 0*
->>> [Get Started](signup)
+>>> [[Get Started]](signup)
 *width: 100%, background: $Color,Accent 1$, border-radius: 8px*
 
 >> Enterprise Card
@@ -57,7 +57,7 @@
 *font-size: 24px*
 >>> Custom pricing, talk to sales.
 *opacity: 70%, margin: 12px 0*
->>> [Contact Sales](contact)
+>>> [[Contact Sales]](contact)
 *width: 100%, variant: outline, border: 1px solid $Color,Accent 1$*
 
 > FAQ Section
@@ -70,7 +70,7 @@
 >> <Billing>
 >> <Setup>
 >> <API>
-*pill-shaped, gap: 12px, active one gets background $Color,Accent 1$*
+*clickable, toggles active, pill-shaped, gap: 12px, active one gets background $Color,Accent 1$*
 
 > Footer
 *align-center, justify-space-between, padding: 60px 5%, border-top: 1px solid $Color,Surface$*

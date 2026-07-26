@@ -20,15 +20,18 @@ This is a stupidly simple skill. The whole dictionary fits below — if you're i
 *   `# H1` / `## H2` / `### H3` — heading levels.
 
 **Selection**
-*   `[x] Label` / `[ ] Label` — checked / unchecked. Covers both checkbox and radio — there's no separate radio shape. If only one in the group can be checked at a time, say so with a `*single-select*` rule on the group; otherwise it's independent, like a normal checkbox.
+*   `[x] Item` / `[ ] Item` — checked / unchecked. Covers both checkbox and radio — there's no separate radio shape. If only one in the group can be checked at a time, say so with a `*single-select*` rule on the group; otherwise it's independent, like a normal checkbox.
+
+**Tags**
+*   `<Label>` — a chip. Static by default. Add a `*rule*` (e.g. `*clickable, toggles active*`) to make it interactive, like a filter — the shape doesn't change, only the rule does.
+*   `<> Placeholder` — text input. Empty brackets, placeholder text outside — same pattern as `[ ] Item`, just angle brackets instead of square.
 
 **Action**
-*   `[Label]` — button that does something in place (submit, toggle, open) but doesn't go anywhere. Nothing follows the closing bracket — that's what tells it apart from a link.
-*   `<Label>` — filter chip. Clicking it toggles it on. A `*rule*` shows it's currently active, e.g. `*active, background $Color,Accent 1$*` — no rule means it's off.
-*   `<> Placeholder` — text input. Empty brackets, placeholder text outside — same pattern as `[ ] Label`, just angle brackets instead of square.
+*   `[[Button]]` — button that does something in place (submit, toggle, open) but doesn't go anywhere on its own.
+*   `[[Button]](url)` — the same button, but it also navigates. Same URL rules as a link, below.
 
 **Links & Media**
-*   `[Label](url)` — anything that navigates, styled as a button or not. Three forms: bare page name for an internal page (`pricing`, not `/pricing` — a leading slash gets read as a command), `#section-name` to jump to a spot on the same page, or a full URL for external (`https://...`). Brackets immediately followed by `(url)`, no space.
+*   `[Link](url)` — plain text that navigates, no button styling. Three forms: bare page name for an internal page (`pricing`, not `/pricing` — a leading slash gets read as a command), `#section-name` to jump to a spot on the same page, or a full URL for external (needs a protocol: `https://`, `http://`, `mailto:`, etc.). Brackets immediately followed by `(url)`, no space. Single brackets always need the `(url)` — without it, it isn't a valid form of anything; use `[[Button]]` instead.
 *   `![alt text](image.jpg)` — image.
 *   `:icon-name:` — icon.
 

@@ -49,13 +49,15 @@ Card >> [Click Here](signup)
 ## The shapes, quickly
 
 - `>` `>>` `>>>` — how deep something is nested (max 3 levels)
+- `> Component` — the name after `>` can be anything: a section, a container, a card, an accordion, a banner, whatever you're describing. There's no fixed list of container types, just a name and a depth.
 - `---` — divider, on its own line
 - `# H1` / `## H2` / `### H3` — headings
-- `[x] Label` / `[ ] Label` — checked / unchecked (checkbox or radio — add `*single-select*` on the group for radio-style behavior)
-- `[Label]` — button
-- `<Label>` — filter chip (toggles active on click)
+- `[x] Item` / `[ ] Item` — checked / unchecked (checkbox or radio — add `*single-select*` on the group for radio-style behavior)
+- `<Label>` — a tag (add a rule like `*clickable, toggles active*` to make it a filter)
 - `<> Placeholder` — text input
-- `[Label](url)` — link
+- `[[Button]]` — button
+- `[[Button]](url)` — button that also navigates
+- `[Link](url)` — plain text link, no button styling
 - `![alt text](image.jpg)` — image
 - `:icon-name:` — icon
 - `// note` — context for the model, never shown on screen
@@ -64,6 +66,16 @@ Card >> [Click Here](signup)
 - `**global instructions**` — a note that applies to the whole screen
 
 ## A full example
+
+Container names are yours to pick — a two-column layout is just two named containers at the same depth:
+
+```
+> Hero
+>> Left Container
+>>> # Hero title
+>> Right Container
+>>> ![Hero illustration](hero_illustration.jpg)
+```
 
 The same landing page, two ways. First, precise — real CSS-ish values, nothing left to guess:
 
@@ -76,7 +88,7 @@ The same landing page, two ways. First, precise — real CSS-ish values, nothing
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
 *variant: ghost, font-size: 14px*
->> [Get Started](signup)
+>> [[Get Started]](signup)
 *background: $Color,Accent 1$, padding: 8px 20px, border-radius: 8px*
 
 > Hero
@@ -85,7 +97,7 @@ The same landing page, two ways. First, precise — real CSS-ish values, nothing
 *font-size: 80px, background: linear-gradient(90deg, $Color,Accent 1$, $Color,Accent 2$), background-clip: text*
 >> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
 *font-size: 20px, opacity: 70%, margin-top: 16px*
->> [Start Free Trial](signup)
+>> [[Start Free Trial]](signup)
 *background: $Color,Accent 2$, padding: 14px 28px, border-radius: 8px, on-hover: box-shadow 0 0 24px $Color,Accent 2$*
 >> ![Preview of a screen built in UI-MD](preview.png)
 *border-radius: 16px, box-shadow: 0 20px 40px rgba(0,0,0,0.4)*
@@ -105,7 +117,7 @@ The same landing page, two ways. First, precise — real CSS-ish values, nothing
 *font-size: 24px*
 >>> Free forever, for one project.
 *opacity: 70%, margin: 12px 0*
->>> [Get Started](signup)
+>>> [[Get Started]](signup)
 *width: 100%*
 
 >> Pro Card
@@ -114,7 +126,7 @@ The same landing page, two ways. First, precise — real CSS-ish values, nothing
 *font-size: 24px*
 >>> $29/month, unlimited projects.
 *opacity: 70%, margin: 12px 0*
->>> [Get Started](signup)
+>>> [[Get Started]](signup)
 *width: 100%, background: $Color,Accent 1$, border-radius: 8px*
 
 >> Enterprise Card
@@ -123,7 +135,7 @@ The same landing page, two ways. First, precise — real CSS-ish values, nothing
 *font-size: 24px*
 >>> Custom pricing, talk to sales.
 *opacity: 70%, margin: 12px 0*
->>> [Contact Sales](contact)
+>>> [[Contact Sales]](contact)
 *width: 100%, variant: outline, border: 1px solid $Color,Accent 1$*
 
 > FAQ Section
@@ -136,7 +148,7 @@ The same landing page, two ways. First, precise — real CSS-ish values, nothing
 >> <Billing>
 >> <Setup>
 >> <API>
-*pill-shaped, gap: 12px, active one gets background $Color,Accent 1$*
+*clickable, toggles active, pill-shaped, gap: 12px, active one gets background $Color,Accent 1$*
 
 > Footer
 *align-center, justify-space-between, padding: 60px 5%, border-top: 1px solid $Color,Surface$*
@@ -157,7 +169,7 @@ Now the dumb version — same structure, every rule swapped for a feeling instea
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
 *whisper quiet, just kinda there*
->> [Get Started](signup)
+>> [[Get Started]](signup)
 *this is the star of the show, make it glow*
 
 > Hero
@@ -166,7 +178,7 @@ Now the dumb version — same structure, every rule swapped for a feeling instea
 *massive, a mic-drop moment, feels alive*
 >> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
 *soft, like a whisper right after the shout*
->> [Start Free Trial](signup)
+>> [[Start Free Trial]](signup)
 *irresistible, warm, makes you want to click without thinking about it*
 >> ![Preview of a screen built in UI-MD](preview.png)
 *floaty, like it's hovering just above the page*
@@ -184,20 +196,20 @@ Now the dumb version — same structure, every rule swapped for a feeling instea
 *chill, no pressure, just here if you need it*
 >>> ### Developer
 >>> Free forever, for one project.
->>> [Get Started](signup)
+>>> [[Get Started]](signup)
 
 >> Pro Card
 *the golden child — make everyone want to be here*
 >>> ### Pro
 >>> $29/month, unlimited projects.
->>> [Get Started](signup)
+>>> [[Get Started]](signup)
 *loud and proud, this is the one*
 
 >> Enterprise Card
 *quietly confident, doesn't need to try hard*
 >>> ### Enterprise
 >>> Custom pricing, talk to sales.
->>> [Contact Sales](contact)
+>>> [[Contact Sales]](contact)
 *understated, almost whispering*
 
 > FAQ Section
@@ -210,7 +222,7 @@ Now the dumb version — same structure, every rule swapped for a feeling instea
 >> <Billing>
 >> <Setup>
 >> <API>
-*little chips, satisfying to tap, the picked one lights up*
+*tappable, little chips, satisfying to tap, the picked one lights up*
 
 > Footer
 *fading out gently, like the credits rolling*

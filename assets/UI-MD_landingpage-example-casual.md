@@ -12,7 +12,7 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
 *whisper quiet, just kinda there*
->> [Get Started](signup)
+>> [[Get Started]](signup)
 *this is the star of the show, make it glow*
 
 > Hero
@@ -21,7 +21,7 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 *massive, a mic-drop moment, feels alive*
 >> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
 *soft, like a whisper right after the shout*
->> [Start Free Trial](signup)
+>> [[Start Free Trial]](signup)
 *irresistible, warm, makes you want to click without thinking about it*
 >> ![Preview of a screen built in UI-MD](preview.png)
 *floaty, like it's hovering just above the page*
@@ -39,20 +39,20 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 *chill, no pressure, just here if you need it*
 >>> ### Developer
 >>> Free forever, for one project.
->>> [Get Started](signup)
+>>> [[Get Started]](signup)
 
 >> Pro Card
 *the golden child — make everyone want to be here*
 >>> ### Pro
 >>> $29/month, unlimited projects.
->>> [Get Started](signup)
+>>> [[Get Started]](signup)
 *loud and proud, this is the one*
 
 >> Enterprise Card
 *quietly confident, doesn't need to try hard*
 >>> ### Enterprise
 >>> Custom pricing, talk to sales.
->>> [Contact Sales](contact)
+>>> [[Contact Sales]](contact)
 *understated, almost whispering*
 
 > FAQ Section
@@ -65,7 +65,7 @@ A "dumb," conversational version of the same landing page from [UI-MD_landingpag
 >> <Billing>
 >> <Setup>
 >> <API>
-*little chips, satisfying to tap, the picked one lights up*
+*tappable, little chips, satisfying to tap, the picked one lights up*
 
 > Footer
 *fading out gently, like the credits rolling*
