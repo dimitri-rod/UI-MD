@@ -18,17 +18,17 @@ Diffuseness is also the answer to "why not just write it out?" `[[Get Started]]`
 
 One asterisk is local, two is global. Bold is louder; louder reaches further.
 
-The same framework names **error-proneness**, and a one-character difference between "this button" and "the entire screen" is a textbook case: both render as emphasis, so a typo is invisible on the page and invisible in the source.
+The same framework names **error-proneness**, and a one-character difference between "this button" and "the entire file" is a textbook case: both render as emphasis, so a typo is invisible on the page and invisible in the source.
 
 Spelling out a `Global` keyword was considered and rejected — terseness counts too, and scope markers are typed constantly. The risk is handled outside the notation instead: the skill file requires the model to list every global rule it applied. A mistyped scope surfaces in one line rather than propagating silently. Where a notation can't make an error visible, the tool around it should.
 
 ## Why there is no third scope
 
-`***bold italic***` is available and means nothing here. The obvious candidate was cross-screen scope — the next rung on a ladder where louder means wider.
+`***bold italic***` is available and means nothing here. The obvious candidate was cross-file scope — the next rung on a ladder where louder means wider.
 
-It points the wrong way. `$Token$` already connects a screen to the design system by **reading**: design system upstream, screen downstream. A cross-screen rule would **write** in the opposite direction, letting any screen file change values used by screens you haven't opened. That's a **hidden dependency** — worse than the typo risk above, because it's invisible by design rather than by accident.
+It points the wrong way. `$Token$` already connects a file to the design system by **reading**: design system upstream, screens downstream. A cross-file rule would **write** in the opposite direction, letting one file change values used by screens you haven't opened. That's a **hidden dependency** — worse than the typo risk above, because it's invisible by design rather than by accident.
 
-So the ladder stops at the screen. When a notation has an obvious empty slot, ask what would fill it and whether that thing should exist. Empty slots are cheaper than wrong ones.
+So the ladder stops at the file. Everything you can affect is everything you can see by scrolling. When a notation has an obvious empty slot, ask what would fill it and whether that thing should exist. Empty slots are cheaper than wrong ones.
 
 ## Why there is no group syntax
 

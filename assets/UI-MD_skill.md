@@ -78,7 +78,7 @@ That is how sibling groups are styled — there is no separate group syntax. A m
 ### Local and global
 
 `*single asterisks*` are **local** — the run of lines above.
-`**double asterisks**` are **global** — the whole screen, wherever they appear.
+`**double asterisks**` are **global** — the whole file, wherever they appear. A file may hold one screen or several; global reaches all of them.
 
 ```
 **base font Inter, spacing unit 8px, rounded 12px, motion 200ms ease-out**
@@ -91,7 +91,7 @@ A `Global` block at the top is the conventional home for tokens and defaults, bu
 
 **Report global rules back.** `*` and `**` differ by one character and both render as emphasis, so a mistyped local rule silently becomes page-wide. After building, list every global rule you applied — one line each. Never fail silently on scope.
 
-**`***three asterisks***` is undefined.** Scope stops at the screen. Treat it as `**global**`, and say that you did, so it surfaces as a typo rather than becoming a feature. The level above the screen is the design system — a separate upstream file that screens *read* from via `$Token$`. Nothing in a screen file may change it.
+**`***three asterisks***` is undefined.** Scope stops at the file. Treat it as `**global**`, and say that you did, so it surfaces as a typo rather than becoming a feature. The level above the file is the design system — a separate upstream file that UI-MD files *read* from via `$Token$`. Nothing in a UI-MD file may change it, and no UI-MD file may reach into another.
 
 ### Tokens
 

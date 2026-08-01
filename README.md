@@ -72,7 +72,7 @@ Three links, one rule. The run ends at a blank line, another modifier, or a shal
 
 On a container, a modifier is inherited by everything nested under it.
 
-`**Double asterisks**` apply to the whole screen:
+`**Double asterisks**` apply to the whole file — every screen in it:
 
 ```
 **base font Inter, spacing unit 8px, rounded 12px**
