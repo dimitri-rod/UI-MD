@@ -62,6 +62,8 @@ Container names are yours to pick — section, card, banner, drawer. A two-colum
 
 The run ends at a blank line, another modifier, or a shallower container. Containers pass it down. That's why there's no group syntax.
 
+Of those three boundaries only the blank line is fragile — some tools strip blank lines when they hand a file back. When a boundary matters, name a container instead of leaning on one.
+
 `**Double asterisks**` are global — the whole file, wherever they appear.
 
 ```
@@ -87,7 +89,7 @@ Globals first, then the tree in order. Fill in unspecified detail; don't invent 
 // six or so, spanning billing, setup and API
 ```
 
-That's the only case where it adds content you didn't write.
+That's the only case where it adds content you didn't write, and the note controls how far it goes. `// six or so` invites invention. `// exactly these four: Nike, Google, Oura, Patagonia` forbids it — use that form for anything named, like clients, logos or people, where a plausible invention is a false claim.
 
 ## Changing
 
