@@ -16,6 +16,8 @@ Four references. Each would change a decision if it had found the opposite.
 
 > Blackwell, A.F. et al. (2001). [Cognitive Dimensions of Notations](https://www.cl.cam.ac.uk/~afb21/publications/CT2001.pdf). *Cognitive Technology 2001*, LNCS 2117, 325–341.
 
+**Parens, not angle brackets.** `<Label>` was HTML. Markdown passes inline HTML straight through, so one builder rendered the literal characters and another rendered an empty unknown element; `<>` is JSX fragment shorthand and renders nothing by design. Two tools, two different wrong answers, one collision — a primitive that renders differently per parser isn't one. Parentheses are inert in HTML, JSX and Markdown, and pill-shaped besides. This is the only decision here that was found by testing rather than argued.
+
 **Names are the product.** EDIT-Bench: 540 real edit instructions, only 1 of 40 models above 60%, and context alone swings success 11 points. Assistants never parse "the second button" — the editor hands them the cursor. A designer in a chat box has no cursor. A name is the cheapest substitute.
 
 > [EDIT-Bench: Evaluating LLM Abilities to Perform Real-World Instructed Code Edits](https://arxiv.org/abs/2511.04486) (2025). arXiv:2511.04486.

@@ -33,8 +33,8 @@ Pro Card: thicker border, glow on hover
 | `[Link](url)` | Text link. No `https://` means a page in the same product. |
 | `[[Button]]` | Button |
 | `[[Button]](url)` | Button that navigates |
-| `<> Placeholder` | Text input |
-| `<Label>` | Tag. `*clickable, toggles active*` on a group makes filters. |
+| `() Placeholder` | Text input |
+| `(Label)` | Tag. `*clickable, toggles active*` on a group makes filters. |
 | `[x] Item` / `[ ] Item` | Checked / unchecked. Multi-select unless `*single-select*`. |
 | `![alt](image.jpg)` | Image |
 | `:icon-name:` | Icon |

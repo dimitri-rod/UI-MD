@@ -65,12 +65,12 @@
 *calm, centered, breathing room. padding: 80px 5%*
 >> ## Frequently asked questions.
 *font-size: 32px, font-weight: 700, text-align: center*
->> <> Search questions...
+>> () Search questions...
 *width: 400px, simple and inviting, not demanding*
->> <All>
->> <Billing>
->> <Setup>
->> <API>
+>> (All)
+>> (Billing)
+>> (Setup)
+>> (API)
 *clickable, toggles active, little pills, the picked one lights up with $Color,Accent 1$*
 >> Can I switch between monthly and annual billing?
 *accordion, one open at a time, border-bottom: 1px solid $Color,Surface$*
