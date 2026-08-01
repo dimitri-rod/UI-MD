@@ -4,7 +4,7 @@ Designing with LLMs is annoying.
 
 Prose has no structure and nothing persists, so every message starts from zero. A screen comes back 70% right, and fixing it costs a paragraph saying *which* before four words saying *what*.
 
-UI-MD is a handful of characters you already know from Markdown. Structure on turn one, a name to point at on every turn after. That's it — the whole dictionary is below, and if you find yourself inventing a symbol that isn't in it, don't. Write plain text and a `*rule*` instead.
+UI-MD is a handful of characters you already know from Markdown. Structure on turn one, a name to point at on every turn after. This page is the whole language — hand it to a model and start writing. If you find yourself inventing a symbol that isn't here, don't. Write plain text and a `*rule*` instead.
 
 ```
 > Pricing Section
@@ -35,24 +35,20 @@ Nouns are **primitives** — what exists on screen. Adjectives are **modifiers**
 
 | | |
 |---|---|
-| `> Name` | Container |
+| `> Name` | Container. Each extra `>` goes one level deeper. No depth limit. |
 | `# H1` `## H2` `### H3` | Heading |
-| any bare line | Body copy |
-| `[Link](url)` | Text link |
+| any bare line | Body copy — paragraph, subtitle or caption, decided by position |
+| `[Link](url)` | Text link. No `https://` means a page elsewhere in the same product; a full URL is external. |
 | `[[Button]]` | Button |
 | `[[Button]](url)` | Button that navigates |
-| `<> Placeholder` | Text input |
-| `<Label>` | Tag or pill |
-| `[x]` / `[ ]` | Checked / unchecked |
+| `<> Placeholder` | Text input, placeholder is the text |
+| `<Label>` | Tag or pill. Add `*clickable, toggles active*` to a group to make filters. |
+| `[x] Item` / `[ ] Item` | Checked / unchecked. A group is multi-select; `*single-select*` makes it radio. |
 | `![alt](image.jpg)` | Image |
 | `:icon-name:` | Icon |
-| `---` | Divider |
-| `// note` | Context for the model, never rendered |
-| `$Name,Variant$` | Exact value from your design system |
+| `---` | Divider, on its own line |
 
-`>` is a container. Each extra `>` goes one level deeper. No depth limit.
-
-Container names are yours to pick — section, card, banner, accordion, drawer, whatever you're describing. A two-column layout is just two named containers at the same depth:
+Container names are yours to pick — section, card, banner, accordion, drawer. A two-column layout is just two named containers at the same depth:
 
 ```
 > Hero
@@ -62,11 +58,11 @@ Container names are yours to pick — section, card, banner, accordion, drawer, 
 >>> ![Hero illustration](hero_illustration.jpg)
 ```
 
-**Names must be unique in the file.** Not `Card` three times — `Developer Card`, `Pro Card`, `Enterprise Card`. The name is the address.
+**Names must be unique in the file.** Not `Card` three times — `Developer Card`, `Pro Card`, `Enterprise Card`. The name is the address, so it carries through into the emitted code as a class, component name or comment. That's what makes it findable later.
 
 ## Modifiers
 
-`*...*` attaches to the run of lines directly above it.
+`*...*` attaches to the run of lines directly above it. Never anything below.
 
 ```
 >> [Features](#features)
@@ -82,14 +78,35 @@ Three links, one rule. The run ends at a blank line, another modifier, or a shal
 
 On a container, a modifier is inherited by everything nested under it.
 
-`**Double asterisks**` apply to the whole file — every screen in it:
+### Local and global
+
+`*Single asterisks*` are local. `**Double asterisks**` are global — the whole file, every screen in it, wherever the line appears.
 
 ```
+**$Color,Accent 1$ #6366F1, $Color,Accent 2$ #EC4899**
 **base font Inter, spacing unit 8px, rounded 12px**
-**$Color,Accent 1$ #6366F1**
 ```
 
 Local beats global, later beats earlier, children inherit.
+
+The two marks differ by one character and both render as emphasis, so a mistyped local rule silently goes page-wide. The model lists every global rule it applied after building, so you can catch it. `***Three asterisks***` is undefined — treated as global and reported as a probable typo.
+
+### Tokens
+
+`$Name,Variant$` is an exact value from your design system — `$Color,Accent 1$`, `$Border Width,200$`. Define them in a global line, or leave them undefined and connect a design system later.
+
+A token is a binding, not a value. It stays a token even when nothing defines it yet — that's the point of writing one. If an edit ever replaces one with a literal, the model says so, because otherwise that node quietly leaves the design system and nothing downstream notices.
+
+### Notes
+
+`// text` is context for whoever builds this next — a caveat, a reason, a TODO. Never rendered.
+
+```
+>> [x] Monthly
+>> [ ] Annual, save 20%
+*single-select*
+// switching to Annual updates all three card prices with the discount
+```
 
 ---
 
@@ -130,16 +147,16 @@ The shapes are the strict part of the language. The rules are closer to talking 
 
 ## The same page, two ways
 
-Here's the pricing section from the [full landing page example](assets/UI-MD_landingpage-example.md), written precisely — real values, nothing left to guess:
+The pricing section from the [full landing page example](assets/UI-MD_landingpage-example.md), written precisely:
 
 ```
 > Pricing Section
-*align-center, flex-col, padding: 100px 5%*
+*align-center, flex-col, padding: 100px 5%, gap: 32px*
 >> ## Simple, transparent pricing.
 *font-size: 40px, font-weight: 700, text-align: center*
 
 >> Pro Card
-*background: $Color,Surface$, border: 2px solid $Color,Accent 1$, border-radius: 16px, padding: 40px, transform: scale(1.05)*
+*background: $Color,Surface$, border: 2px solid $Color,Accent 1$, border-radius: 16px, padding: 40px*
 >>> ### Pro
 >>> $29/month, unlimited projects.
 *opacity: 70%, margin: 12px 0*
@@ -167,6 +184,10 @@ Same layout, same result. The tidy version is optional, not required.
 
 ---
 
+## Building
+
+Read the global lines first, then build the tree in order — depth is layout nesting. Fill unspecified detail with defaults consistent with the globals, but don't invent content, copy or sections that weren't written.
+
 ## Changing
 
 ```
@@ -181,17 +202,19 @@ Pricing Section on mobile: stack the cards
 
 The name comes off the file. You're not describing the element — you're reading its label.
 
+- Change only that node. Don't restructure or improve what's around it.
+- `on hover`, `on mobile`, `when empty` scope the change to that state. The base case stays as it was.
+- A name that isn't in the file has no address. The model says so rather than creating it.
+- Afterwards the file is updated to match, in the modifier that owns the node — never as a `// note`, since notes don't render and a rule left in one won't survive the next build.
+
 ---
 
 ## Using it
 
-1. Give a model [`assets/UI-MD_skill.md`](assets/UI-MD_skill.md) as its instructions.
-2. Write your screen in UI-MD.
-3. To change something later, name it and say what should happen.
+Give a model this page, write your screen, then change things by name.
 
 | | |
 |---|---|
-| [`assets/UI-MD_skill.md`](assets/UI-MD_skill.md) | The full rules. Give this to the model. |
 | [`assets/UI-MD_landingpage-example.md`](assets/UI-MD_landingpage-example.md) | A full landing page, written precisely. |
 | [`assets/UI-MD_landingpage-example-casual.md`](assets/UI-MD_landingpage-example-casual.md) | The same page, written as feelings. |
 | [`RATIONALE.md`](RATIONALE.md) | Why it's shaped this way. |
@@ -202,6 +225,7 @@ The name comes off the file. You're not describing the element — you're readin
 
 - Rename something and the old name stops resolving.
 - Hand-edit the code and this file becomes fiction. A round-trip extractor would fix that. Not built.
+- No way to say "six FAQ questions go here." Ask for a section with repeating content and the model invents it.
 - Untested against its null hypothesis: the same screen in prose, in UI-MD, and as a numbered outline the model emits itself. Ten edits each. Count first-try hits.
 
 No IDs, no schema, no parser, no validator. If a shape doesn't make something shorter or clearer, it isn't here.

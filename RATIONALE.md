@@ -20,7 +20,7 @@ One asterisk is local, two is global. Bold is louder; louder reaches further.
 
 The same framework names **error-proneness**, and a one-character difference between "this button" and "the entire file" is a textbook case: both render as emphasis, so a typo is invisible on the page and invisible in the source.
 
-Spelling out a `Global` keyword was considered and rejected — terseness counts too, and scope markers are typed constantly. The risk is handled outside the notation instead: the skill file requires the model to list every global rule it applied. A mistyped scope surfaces in one line rather than propagating silently. Where a notation can't make an error visible, the tool around it should.
+Spelling out a `Global` keyword was considered and rejected — terseness counts too, and scope markers are typed constantly. The risk is handled outside the notation instead: the model lists every global rule it applied. A mistyped scope surfaces in one line rather than propagating silently. Where a notation can't make an error visible, the tool around it should.
 
 ## Why there is no third scope
 
@@ -50,11 +50,11 @@ Coding assistants never parse "the second button." The editor hands them the sel
 
 > [EDIT-Bench: Evaluating LLM Abilities to Perform Real-World Instructed Code Edits](https://arxiv.org/abs/2511.04486) (2025). arXiv:2511.04486.
 
-## Why the skill file exists, and why it fits on one page
+## Why there is one page, handed over whole
 
 LLMs generalise poorly to a structured language from examples alone, and improve substantially when handed the grammar up front — and a **minimally sufficient** grammar, a subset rather than the full specification, works best.
 
-So: hand the model the rules rather than hoping it infers them, and keep them small enough to state once.
+So: hand the model the rules rather than hoping it infers them, and keep them small enough to state once. This is also why the README *is* the spec. A separate model-facing file was tried and deleted — two documents describing one grammar drift, and the duplicated half is dead weight in both.
 
 > Wang, B. et al. (2023). [Grammar Prompting for Domain-Specific Language Generation with Large Language Models](https://arxiv.org/abs/2305.19234). *NeurIPS 2023*. arXiv:2305.19234.
 
