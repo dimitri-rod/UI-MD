@@ -1,6 +1,5 @@
-# landingpage_example_casual.md
-
-A "dumb," conversational version of the same landing page from [UI-MD_landingpage-example.md](UI-MD_landingpage-example.md) — same shapes, same structure, but every rule is a feeling instead of a CSS property. Proof that the tidy version is optional, not required.
+// The same landing page as UI-MD_landingpage-example.md — same shapes, same structure,
+// but every modifier is a feeling instead of a CSS property. The tidy version is optional.
 
 **Dark mode. Moody, confident, a little rebellious. Purple as the main pop, red for the loud stuff. Feels expensive without trying too hard.**
 

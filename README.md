@@ -1,267 +1,121 @@
 # UI-MD
 
-Designing with LLMs is annoying.
+Prose has no structure and nothing persists. Every message starts from zero.
 
-Saying which layer a component belongs in, or that this one specific button needs a different font, takes a paragraph — and the model still guesses wrong.
+So a screen comes back 70% right, and fixing it costs a paragraph saying *which* before four words saying *what*.
 
-UI-MD mixes Markdown and basic CSS into a stupidly simple dictionary, so designers and machines can point at the same thing and mean the same thing.
-
-## The idea, in one example
-
-You write this:
+UI-MD is a handful of characters you already know from Markdown. Structure on turn one, a name to point at on every turn after.
 
 ```
-> Card
->> [Click Here](signup)
->> [Follow us](https://twitter.com/acme)
+> Pricing Section
+>> Pro Card
+>>> ## Pro
+>>> $29/month, unlimited projects.
+>>> [[Get Started]](signup)
+*bordered, slightly larger than the others*
 ```
 
-That's a container with two links in it. `>>` just means "one level deeper." `signup` with no `https://` is an internal page — a screen elsewhere in the same product. A full URL is external. That's most of the language.
-
-Hand this to a model along with the rules file below, and it builds the actual screen (React, HTML, Figma — whatever you ask for).
-
-## Later, when you want to change one thing
-
-Once a screen is written, you can point at any single piece of it by walking down the same path:
+Then, later:
 
 ```
-Card >> [Click Here](signup)
+Pro Card: thicker border, glow on hover
 ```
 
-"The link, inside the card." No need to describe it — just read the path off the file you already have.
+---
 
-## What's in this repo
+## The principle
 
-| File | What it's for |
+**Nouns are syntax. Adjectives are prose. Verbs are chat.**
+
+Nouns are **primitives** — what exists on screen. Adjectives are **modifiers** — how it looks, in plain words. Verbs are never written down; you say them once, in chat.
+
+---
+
+## Primitives
+
+| | |
 |---|---|
-| [`assets/UI-MD_manifest.md`](assets/UI-MD_manifest.md) | Why this exists — the short pitch. Read this first. |
-| [`assets/UI-MD_skill.md`](assets/UI-MD_skill.md) | The rules for writing a screen. Give this to the model as its instructions. |
-| [`assets/UI-MD_pointer.md`](assets/UI-MD_pointer.md) | The rules for pointing at one exact thing inside a screen you already wrote. |
-| [`assets/UI-MD_landingpage-example.md`](assets/UI-MD_landingpage-example.md) | A full example — a real landing page written in UI-MD, so you can see the rules in use. |
-| [`assets/UI-MD_landingpage-example-casual.md`](assets/UI-MD_landingpage-example-casual.md) | The same page, written casually instead of in CSS-speak — proof the tidy version is optional. |
+| `> Name` | Container |
+| `# H1` `## H2` `### H3` | Heading |
+| any bare line | Body copy |
+| `[Link](url)` | Text link |
+| `[[Button]]` | Button |
+| `[[Button]](url)` | Button that navigates |
+| `<> Placeholder` | Text input |
+| `<Label>` | Tag or pill |
+| `[x]` / `[ ]` | Checked / unchecked |
+| `![alt](image.jpg)` | Image |
+| `:icon-name:` | Icon |
+| `---` | Divider |
+| `// note` | Context for the model, never rendered |
+| `$Name,Variant$` | Exact value from your design system |
 
-## Using it
+`>` is a container. Each extra `>` goes one level deeper. No depth limit.
 
-1. Give a model [`UI-MD_skill.md`](assets/UI-MD_skill.md) as its system instructions.
-2. Write your screen in UI-MD.
-3. To edit one thing later, give the model [`UI-MD_pointer.md`](assets/UI-MD_pointer.md) plus a path to what you want changed, e.g. `Card >> [Click Here](signup)`, and say what should change.
+**Names must be unique in the file.** Not `Card` three times — `Developer Card`, `Pro Card`, `Enterprise Card`. The name is the address.
 
-## Shapes and characters, quickly
+## Modifiers
 
-- `*local instructions*` — a note attached to the thing above or below it
-- `**global instructions**` — a note that applies to the whole screen
-- `>` `>>` `>>>` — how deep something is nested (max 3 levels)
-- `> Component` — the name after `>` can be anything: a section, a container, a card, an accordion, a banner, whatever you're describing. There's no fixed list of container types, just a name and a depth.
-- `---` — divider, on its own line
-- `# H1` / `## H2` / `### H3` — headings
-- `[x] Item` / `[ ] Item` — checked / unchecked (checkbox or radio — add `*single-select*` on the group for radio-style behavior)
-- `<Label>` — a tag (add a rule like `*clickable, toggles active*` to make it a filter)
-- `<> Placeholder` — text input
-- `[[Button]]` — button
-- `[[Button]](url)` — button that also navigates
-- `[Link](url)` — plain text link, no button styling
-- `![alt text](image.jpg)` — image
-- `:icon-name:` — icon
-- `// note` — context for the model, never shown on screen
-- `$Token$` — pull an exact value from your design system, e.g. `$Border Width,200$`
-
-## A full example
-
-Container names are yours to pick — a two-column layout is just two named containers at the same depth:
+`*...*` attaches to the run of lines directly above it.
 
 ```
-> Hero
->> Left Container
->>> # Hero title
->> Right Container
->>> ![Hero illustration](hero_illustration.jpg)
-```
-
-The same landing page, two ways. First, precise — real CSS-ish values, nothing left to guess:
-
-```
-> Navbar
-*align-center, justify-space-between, padding: 20px 5%, position: sticky-top, background: $Color,Background$*
->> UI-MD
-*font-weight: 700, font-size: 20px*
 >> [Features](#features)
 >> [Pricing](#pricing)
 >> [FAQ](#faq)
-*variant: ghost, font-size: 14px*
+*ghost, 14px*
+
 >> [[Get Started]](signup)
-*background: $Color,Accent 1$, padding: 8px 20px, border-radius: 8px*
-
-> Hero
-*align-center, justify-center, text-align: center, padding: 120px 5%, max-width: 800px, margin: 0 auto*
->> # Design at the speed of thought.
-*font-size: 80px, background: linear-gradient(90deg, $Color,Accent 1$, $Color,Accent 2$), background-clip: text*
->> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
-*font-size: 20px, opacity: 70%, margin-top: 16px*
->> [[Start Free Trial]](signup)
-*background: $Color,Accent 2$, padding: 14px 28px, border-radius: 8px, on-hover: box-shadow 0 0 24px $Color,Accent 2$*
->> ![Preview of a screen built in UI-MD](preview.png)
-*border-radius: 16px, box-shadow: 0 20px 40px rgba(0,0,0,0.4)*
-
-> Pricing Section
-*align-center, flex-col, padding: 100px 5%*
->> ## Simple, transparent pricing.
-*font-size: 40px, font-weight: 700, text-align: center*
->> [x] Monthly
->> [ ] Annual, save 20%
-*single-select, border-radius: 999px, padding: 8px*
-// switching to Annual should update all three card prices to reflect the 20% discount
-
->> Developer Card
-*background: $Color,Surface$, border-radius: 16px, padding: 40px*
->>> ### Developer
-*font-size: 24px*
->>> Free forever, for one project.
-*opacity: 70%, margin: 12px 0*
->>> [[Get Started]](signup)
-*width: 100%*
-
->> Pro Card
-*background: $Color,Surface$, border: 2px solid $Color,Accent 1$, border-radius: 16px, padding: 40px, transform: scale(1.05)*
->>> ### Pro
-*font-size: 24px*
->>> $29/month, unlimited projects.
-*opacity: 70%, margin: 12px 0*
->>> [[Get Started]](signup)
-*width: 100%, background: $Color,Accent 1$, border-radius: 8px*
-
->> Enterprise Card
-*background: $Color,Surface$, border-radius: 16px, padding: 40px, opacity: 90%*
->>> ### Enterprise
-*font-size: 24px*
->>> Custom pricing, talk to sales.
-*opacity: 70%, margin: 12px 0*
->>> [[Contact Sales]](contact)
-*width: 100%, variant: outline, border: 1px solid $Color,Accent 1$*
-
-> FAQ Section
-*align-center, flex-col, padding: 80px 5%*
->> ## Frequently asked questions.
-*font-size: 32px, font-weight: 700, text-align: center*
->> <> Search questions...
-*width: 400px, margin: 24px 0, padding: 12px 16px, border-radius: 8px, background: $Color,Surface$*
->> <All>
->> <Billing>
->> <Setup>
->> <API>
-*clickable, toggles active, pill-shaped, gap: 12px, active one gets background $Color,Accent 1$*
-
-> Footer
-*align-center, justify-space-between, padding: 60px 5%, border-top: 1px solid $Color,Surface$*
->> Acme Corp © 2026. All rights reserved.
-*opacity: 50%, font-size: 14px*
->> :twitter: :github: :discord:
-*gap: 16px, color: $Color,Accent 1$*
+*background $Color,Accent 1$, rounded 8px, glow on hover*
 ```
 
-Now the dumb version — same structure, every rule swapped for a feeling instead of a property:
+Three links, one rule. The run ends at a blank line, another modifier, or a shallower container — so styling a group needs no group syntax.
+
+On a container, a modifier is inherited by everything nested under it.
+
+`**Double asterisks**` apply to the whole screen:
 
 ```
-> Navbar
-*keep it breezy — logo chilling on the left, stuff floating on the right, stays put when you scroll*
->> UI-MD
-*confident, like it knows what it's doing*
->> [Features](#features)
->> [Pricing](#pricing)
->> [FAQ](#faq)
-*whisper quiet, just kinda there*
->> [[Get Started]](signup)
-*this is the star of the show, make it glow*
-
-> Hero
-*deep breath energy — calm, centered, room to exist*
->> # Design at the speed of thought.
-*massive, a mic-drop moment, feels alive*
->> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
-*soft, like a whisper right after the shout*
->> [[Start Free Trial]](signup)
-*irresistible, warm, makes you want to click without thinking about it*
->> ![Preview of a screen built in UI-MD](preview.png)
-*floaty, like it's hovering just above the page*
-
-> Pricing Section
-*calm, spacious, no rush*
->> ## Simple, transparent pricing.
-*confident and clear, no games*
->> [x] Monthly
->> [ ] Annual, save 20%
-*pick one — cute little switch, satisfying to toggle*
-// heads up: flipping to Annual needs to update all three prices with the discount
-
->> Developer Card
-*chill, no pressure, just here if you need it*
->>> ### Developer
->>> Free forever, for one project.
->>> [[Get Started]](signup)
-
->> Pro Card
-*the golden child — make everyone want to be here*
->>> ### Pro
->>> $29/month, unlimited projects.
->>> [[Get Started]](signup)
-*loud and proud, this is the one*
-
->> Enterprise Card
-*quietly confident, doesn't need to try hard*
->>> ### Enterprise
->>> Custom pricing, talk to sales.
->>> [[Contact Sales]](contact)
-*understated, almost whispering*
-
-> FAQ Section
-*calm, centered, breathing room*
->> ## Frequently asked questions.
-*clear, confident, no fluff*
->> <> Search questions...
-*simple, inviting, not demanding*
->> <All>
->> <Billing>
->> <Setup>
->> <API>
-*tappable, little chips, satisfying to tap, the picked one lights up*
-
-> Footer
-*fading out gently, like the credits rolling*
->> Acme Corp © 2026. All rights reserved.
->> :twitter: :github: :discord:
-*tucked away, not asking for attention*
+**base font Inter, spacing unit 8px, rounded 12px**
+**$Color,Accent 1$ #6366F1**
 ```
 
-Same layout, same result either way — the model translates it, not you.
+Local beats global, later beats earlier, children inherit.
 
-## One thing to know
+Inside the asterisks is the only place prose lives. `*make it bigger*` and `*padding 24px, text 20px*` both work.
 
-The shapes above are the only part that's really "UI-MD." What goes *inside* a `*rule*` is just plain CSS-ish description — things like `padding 32px`, `background $Color,Accent 1$`, `align center`, `on hover: translate Y -4px`. You don't need to write real CSS syntax, but knowing the basic vocabulary helps you say what you mean instead of hoping the model guesses right.
+---
 
-The ones that come up constantly:
+## Changing
 
-- **Spacing:** padding, margin, gap
-- **Layout:** align, center, stack, flex-row / flex-col, width, overflow
-- **Look:** background, color, border, rounded, shadow, opacity
-- **Text:** font, weight, uppercase, text size
-- **Motion:** on hover / on click / on load, transform, translate, rotate, animate, duration, infinite
+```
+Pro Card: thicker border, make it feel premium
+Hero Title: shorter, punchier
+FAQ Search: move it above the chips
+Enterprise Card: remove it
 
-If a term isn't in that list, plain English usually works fine. The shapes are the strict part of the language; the rules are closer to talking, not coding.
+Pro Card on hover: soft glow
+Pricing Section on mobile: stack the cards
+```
 
-## Or just say it however you'd normally say it
+The name comes off the file. You're not describing the element — you're reading its label.
 
-If you don't know the "real" word, don't stop to look it up — say it like you would out loud. Both sides below work the same:
+---
 
-| What you'd naturally say | The tidier version |
+## Files
+
+| | |
 |---|---|
-| `*make it bigger*` | `*padding 24px, text 20px*` |
-| `*push it over to the right*` | `*align right*` |
-| `*keep it in the middle*` | `*align center*` |
-| `*give them some breathing room*` | `*gap 16px*` |
-| `*round the corners a bit*` | `*rounded 12px*` |
-| `*make it red*` | `*background $Color,Accent 2$*` |
-| `*make the text lighter, kind of faded*` | `*opacity 70%*` |
-| `*when someone clicks it, save the form*` | `*on click: save*` |
-| `*make it lift up a little when you hover over it*` | `*on hover: translate Y -4px*` |
-| `*fade it in when the page loads*` | `*on load: animate opacity, 1s*` |
+| [`assets/UI-MD_skill.md`](assets/UI-MD_skill.md) | The full rules. Give this to the model. |
+| [`RATIONALE.md`](RATIONALE.md) | Why it's shaped this way. |
+| [`assets/UI-MD_landingpage-example.md`](assets/UI-MD_landingpage-example.md) | A landing page, written precisely. |
+| [`assets/UI-MD_landingpage-example-casual.md`](assets/UI-MD_landingpage-example-casual.md) | The same page, written as feelings. |
 
-Same result either way — the model translates it, not you. The tidier version is just faster to type once it's second nature. Start on the left side of the table and move right whenever it feels natural, not before.
+---
+
+## Limits
+
+- Rename something and the old name stops resolving.
+- Hand-edit the code and this file becomes fiction. A round-trip extractor would fix that. Not built.
+- Untested against its null hypothesis: the same screen in prose, in UI-MD, and as a numbered outline the model emits itself. Ten edits each. Count first-try hits.
+
+No IDs, no schema, no parser, no validator. If a shape doesn't make something shorter or clearer, it isn't here.

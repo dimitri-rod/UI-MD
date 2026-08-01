@@ -1,4 +1,4 @@
-# landingpage_example.md
+// A landing page written in UI-MD, precise version. Every modifier is a CSS-ish value.
 
 **Dark mode. Background: $Color,Background$. Surface: $Color,Surface$. Text: $Color,Text$. Accent 1: $Color,Accent 1$. Accent 2: $Color,Accent 2$. Heading font: $Font,Heading$. Body font: $Font,Body$.**
 
