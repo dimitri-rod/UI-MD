@@ -1,6 +1,9 @@
 // A landing page written in UI-MD, precise version. Every modifier is a CSS-ish value.
 
-**Dark mode. Background: $Color,Background$. Surface: $Color,Surface$. Text: $Color,Text$. Accent 1: $Color,Accent 1$. Accent 2: $Color,Accent 2$. Heading font: $Font,Heading$. Body font: $Font,Body$.**
+**Dark mode.**
+**$Color,Background$ #0A0A0F, $Color,Surface$ #14141C, $Color,Text$ #E8E6F0**
+**$Color,Accent 1$ #7C3AED, $Color,Accent 2$ #22D3EE**
+**$Font,Heading$ "Playfair Display" serif, $Font,Body$ "Inter" sans-serif**
 
 > Navbar
 *align-center, justify-space-between, padding: 20px 5%, position: sticky-top, background: $Color,Background$*

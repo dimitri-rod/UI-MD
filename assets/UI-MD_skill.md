@@ -99,11 +99,15 @@ A `Global` block at the top is the conventional home for tokens and defaults, bu
 
 Never approximate. If a token has no definition in the `Global` block or supplied context, emit it as a named variable (CSS custom property or theme key) rather than guessing a value.
 
+A token is a binding, not a value. It stays a token even when nothing defines it yet — that's the point of writing one.
+
 ---
 
 ## Notes
 
 `// text` is context for you. Never render it.
+
+A note **binds upward**, like a modifier — to the run of lines directly above it. Same rule, same boundaries, so a reader always knows which node a note is about.
 
 ```
 >> [x] Monthly
@@ -141,7 +145,17 @@ Pricing Section on mobile: stack the cards, full width
 - Resolve the name against the UI-MD file, then locate that node in the code by the name you carried through.
 - **Change only that node.** Do not restructure, reformat, or improve surrounding code.
 - `on hover`, `on mobile`, `when empty` and similar scope the change to that state or breakpoint. Leave the base case untouched.
-- If a name resolves to more than one node, stop and ask which. Do not guess.
-- If a name resolves to nothing, say so. Do not create it.
+- A repeated **primitive** label resolves to all of them — three `[[Get Started]]` buttons are three hits. Apply the change to each, then say how many you changed and where.
+- An ambiguous **container** name is an error, not a choice. Names are unique by rule, so a collision means the file is broken. Stop and ask.
+- If a name resolves to nothing, say so. Do not create it, and do not fall back to searching the built code — a name that isn't in the file has no address.
+- If the edit replaces a `$Token$` with a literal, say so and name the token you dropped. Silently overwriting one decouples that node from the design system, and nothing downstream will notice.
 
 After an edit, update the UI-MD file to match. The file and the screen must not drift.
+
+Write the change into the **modifier** of the node it addresses. Never store a rule in a `// note` — notes don't render, so a rule left there won't survive the next build. A note may sit alongside the modifier to explain the reasoning behind it:
+
+```
+> Pricing Section
+*align-center, flex-col, padding: 100px 5%, gap: 32px, on mobile: stack vertically*
+// equal height, no scale on the featured card — hierarchy comes from the border
+```
