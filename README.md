@@ -1,8 +1,12 @@
 # UI-MD
 
-Designing with LLMs is annoying. Prose has no structure and nothing persists, so every message starts from zero — a screen comes back 70% right, and fixing it costs a paragraph saying *which* before four words saying *what*.
+Designing with LLMs can be annoying. 
 
-UI-MD is a handful of characters you already know from Markdown. Structure on turn one, a name to point at on every turn after. This page is the whole language. If you're inventing a symbol that isn't here, don't — write plain text and a `*rule*`.
+Every message written in prose starts from zero. If  a screen comes back 70% right, fixing it costs a paragraph saying *which* before a few words saying *what*.
+
+UI-MD is a handful of characters you already know from Markdown. 
+
+It provides a structure for prompting. Set a unique name for each component and start building. Titles, buttons, labels, links and modifiers. Later, just say the component name and edit without touching anything else.
 
 ```
 > Pricing Section
@@ -19,7 +23,7 @@ Then, later:
 Pro Card: thicker border, glow on hover
 ```
 
-**Nouns are syntax. Adjectives are prose. Verbs are chat.** Primitives are what exists, modifiers are how it looks, and verbs are never written down — you say them once, in chat.
+Primitives are the atomic building blcoks. Modifiers are rules for how it should look. 
 
 ---
 
@@ -42,11 +46,11 @@ Pro Card: thicker border, glow on hover
 | `// text` | Note for whoever builds this. Never rendered. |
 | `$Name,Variant$` | Value from your design system |
 
-**A primitive owns its whole line.** A line made only of primitives is primitives; a line with prose in it is body copy, and any brackets, parens or colons inside it are just characters. So `(Draft)` alone is a tag, `Free forever (for one project)` is a sentence, and `$29/month` is a price rather than a token.
+A primitive owns its whole line. A line made only of primitives is primitives; a line with prose in it is body copy, and any brackets, parens or colons inside it are just characters. So `(Draft)` alone is a tag, `Free forever (for one project)` is a sentence, and `$29/month` is a price rather than a token.
 
 Container names are yours to pick — section, card, banner, drawer. A two-column layout is two named containers at the same depth.
 
-**Names must be unique in the file.** Not `Card` three times — `Developer Card`, `Pro Card`, `Enterprise Card`. The name is the address, and it carries into the emitted code so it's findable later.
+Names must be unique in the file. Not `Card` three times — `Developer Card`, `Pro Card`, `Enterprise Card`. The name is the address, and it carries into the emitted code so it's findable later.
 
 ## Modifiers
 
