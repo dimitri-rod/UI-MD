@@ -42,6 +42,8 @@ Pro Card: thicker border, glow on hover
 | `// text` | Note for whoever builds this. Never rendered. |
 | `$Name,Variant$` | Value from your design system |
 
+**A primitive owns its whole line.** A line made only of primitives is primitives; a line with prose in it is body copy, and any brackets, parens or colons inside it are just characters. So `(Draft)` alone is a tag, `Free forever (for one project)` is a sentence, and `$29/month` is a price rather than a token.
+
 Container names are yours to pick — section, card, banner, drawer. A two-column layout is two named containers at the same depth.
 
 **Names must be unique in the file.** Not `Card` three times — `Developer Card`, `Pro Card`, `Enterprise Card`. The name is the address, and it carries into the emitted code so it's findable later.
