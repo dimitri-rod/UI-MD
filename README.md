@@ -111,15 +111,7 @@ The name comes off the file. You're reading its label, not describing it.
 
 ## What goes inside a rule
 
-Plain description. You don't need CSS syntax, but the vocabulary helps you say what you mean.
-
-- **Spacing:** padding, margin, gap
-- **Layout:** align, center, stack, flex-row / flex-col, width, overflow
-- **Look:** background, color, border, rounded, shadow, opacity
-- **Text:** font, weight, uppercase, text size
-- **Motion:** on hover / on click / on load, transform, translate, animate, duration
-
-And if you don't know the real word, say it out loud instead. Both sides work:
+Plain description. If you don't know the real word, say it out loud instead — both sides work:
 
 | | |
 |---|---|
@@ -133,31 +125,20 @@ And if you don't know the real word, say it out loud instead. Both sides work:
 | `*make it lift a little on hover*` | `*on hover: translate Y -4px*` |
 | `*fade it in when the page loads*` | `*on load: animate opacity, 1s*` |
 
-Start on the left, move right when it feels natural. The model translates, not you.
+Start on the left, move right when it feels natural. Mix them freely — often in the same rule.
 
-## The same page, two ways
+## The example
 
-[Precisely](assets/UI-MD_landingpage-example.md):
+[A full landing page](assets/UI-MD_landingpage-example.md), written both ways at once:
 
 ```
 >> Pro Card
 *background: $Color,Surface$, border: 2px solid $Color,Accent 1$, padding: 40px*
 >>> ### Pro
+>>> $29/month, unlimited projects.
 >>> [[Get Started]](signup)
-*width: 100%, background: $Color,Accent 1$*
+*width: 100%, background: $Color,Accent 1$, loud and proud — this is the one*
 ```
-
-[Casually](assets/UI-MD_landingpage-example-casual.md):
-
-```
->> Pro Card
-*the golden child — make everyone want to be here*
->>> ### Pro
->>> [[Get Started]](signup)
-*loud and proud, this is the one*
-```
-
-Same shapes, same result.
 
 ---
 
