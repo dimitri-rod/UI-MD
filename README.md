@@ -106,7 +106,6 @@ The name comes off the file. You're reading its label, not describing it.
 
 - Only that node changes.
 - `on hover`, `on mobile`, `when empty` leave the base case alone.
-- A name that isn't in the file has no address — the model says so instead of creating it.
 - The file is updated after, in the modifier that owns the node. Never in a `// note`; notes don't render, so a rule left in one won't survive the next build.
 
 ---
