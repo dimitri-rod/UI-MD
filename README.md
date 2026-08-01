@@ -7,10 +7,10 @@ UI-MD is a handful of characters you already know from Markdown. Structure on tu
 ```
 > Pricing Section
 >> Pro Card
+*bordered, slightly larger than the others*
 >>> ## Pro
 >>> $29/month, unlimited projects.
 >>> [[Get Started]](signup)
-*bordered, slightly larger than the others*
 ```
 
 Then, later:
@@ -97,7 +97,7 @@ That's the only case where it adds content you didn't write, and the note contro
 
 ```
 Pro Card: thicker border, make it feel premium
-FAQ Search: move it above the chips
+FAQ Search: move it below the chips
 Enterprise Card: remove it
 
 Pro Card on hover: soft glow
@@ -139,6 +139,7 @@ Start on the left, move right when it feels natural. Mix them freely — often i
 *background: $Color,Surface$, border: 2px solid $Color,Accent 1$, padding: 40px*
 >>> ### Pro
 >>> $29/month, unlimited projects.
+*opacity: 70%, margin: 12px 0*
 >>> [[Get Started]](signup)
 *width: 100%, background: $Color,Accent 1$, loud and proud — this is the one*
 ```
