@@ -65,6 +65,9 @@
 >> <Setup>
 >> <API>
 *tappable, little chips, satisfying to tap, the picked one lights up*
+>> Can I switch between monthly and annual billing?
+*tap to open, one at a time, smooth — nothing jumpy*
+// six or so, covering billing, setup and API
 
 > Footer
 *fading out gently, like the credits rolling*

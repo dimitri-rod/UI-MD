@@ -74,6 +74,9 @@
 >> <Setup>
 >> <API>
 *clickable, toggles active, pill-shaped, gap: 12px, active one gets background $Color,Accent 1$*
+>> Can I switch between monthly and annual billing?
+*accordion, one open at a time, border-bottom: 1px solid $Color,Surface$, padding: 20px 0*
+// six or so, spanning billing, setup and API
 
 > Footer
 *align-center, justify-space-between, padding: 60px 5%, border-top: 1px solid $Color,Surface$*

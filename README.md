@@ -95,6 +95,16 @@ A token is a binding, not a value. It stays a token even when nothing defines it
 
 Read the global lines first, then build the tree in order — depth is layout nesting. Fill unspecified detail with defaults consistent with the globals, but don't invent content, copy or sections that weren't written.
 
+**One written item is a pattern.** Where content repeats — FAQ entries, table rows, cards in a feed — write one and the model fills the rest to match:
+
+```
+>> Can I switch between monthly and annual billing?
+*accordion, one open at a time*
+// six or so, spanning billing, setup and API
+```
+
+That's the only case where it adds content you didn't write. Everything else it leaves alone.
+
 ## Changing
 
 ```
@@ -183,7 +193,6 @@ Give a model this page, write your screen, then change things by name.
 
 - Rename something and the old name stops resolving.
 - Hand-edit the code and this file becomes fiction. A round-trip extractor would fix that. Not built.
-- No way to say "six FAQ questions go here." Ask for a section with repeating content and the model invents it.
 - Untested against its null hypothesis: the same screen in prose, in UI-MD, and as a numbered outline the model emits itself. Ten edits each. Count first-try hits.
 
 No IDs, no schema, no parser, no validator. If a shape doesn't make something shorter or clearer, it isn't here.
