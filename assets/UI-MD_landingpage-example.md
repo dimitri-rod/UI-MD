@@ -1,5 +1,5 @@
 // A landing page in UI-MD. Precise where the value matters, plain words where it doesn't —
-// mixed freely, often in the same rule. Both compile the same.
+// mixed freely, often in the same modifier. Both compile the same.
 
 **Dark mode.**
 **$Color,Background$ #0A0A0F, $Color,Surface$ #14141C, $Color,Text$ #E8E6F0**
@@ -10,9 +10,8 @@
 *sticky top, space-between, padding: 20px 5%, background: $Color,Background$*
 >> UI-MD
 *confident, like it knows what it's doing*
->> [Features](#features)
->> [Pricing](#pricing)
->> [FAQ](#faq)
+>> [Pricing](#pricing-section)
+>> [FAQ](#faq-section)
 *ghost, 14px*
 >> [[Get Started]](signup)
 *background: $Color,Accent 1$, padding: 8px 20px, border-radius: 8px*
@@ -21,7 +20,7 @@
 *deep breath energy — calm, centered, room to exist. max-width: 800px, padding: 120px 5%*
 >> # Design at the speed of thought.
 *font-size: 80px, background: linear-gradient(90deg, $Color,Accent 1$, $Color,Accent 2$), background-clip: text*
->> ### A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
+>> A markdown-native language for AI-driven interfaces. Stop writing boilerplate.
 *soft, like a whisper right after the shout. opacity: 70%, margin-top: 16px*
 >> [[Start Free Trial]](signup)
 *background: $Color,Accent 2$, padding: 14px 28px, border-radius: 8px, on hover: glow*
@@ -34,8 +33,7 @@
 *font-size: 40px, font-weight: 700, text-align: center*
 >> [x] Monthly
 >> [ ] Annual, save 20%
-*single-select, cute little switch, satisfying to toggle*
-// switching to Annual updates all three card prices with the discount
+*single-select, cute little switch, satisfying to toggle. on select Annual: all three card prices show the 20% off*
 
 >> Developer Card
 *background: $Color,Surface$, border-radius: 16px, padding: 40px*

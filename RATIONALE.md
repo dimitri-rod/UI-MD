@@ -8,11 +8,11 @@ Four references. Each would change a decision if it had found the opposite.
 
 > Green, T.R.G. & Petre, M. (1996). Usability Analysis of Visual Programming Environments: A 'Cognitive Dimensions' Framework. *JVLC* 7(2), 131–174.
 
-**`*` local, `**` global.** Bold is louder, louder reaches further. One character between "this button" and "the whole file" is textbook error-proneness, so the model reports every global rule it applied. Where a notation can't make an error visible, the tool around it should.
+**`*` local, `**` global.** Bold is louder, louder reaches further. One character between "this button" and "the whole file" is textbook error-proneness, so the model reports every global modifier it applied. Where a notation can't make an error visible, the tool around it should.
 
 **No `***`.** Cross-file scope would let one file rewrite values other screens depend on — a hidden dependency, worse than a typo because it's invisible by design. `$Token$` reads upstream; nothing writes back. The ladder stops at the file.
 
-**No group syntax.** A blank line already separates blocks in Markdown. Borrowing that beats inventing a parallel shape, which would cost a rule and a new way to be wrong. Same reason `Global` behaves like a stylesheet, and `on hover` is a word rather than `:hover`. It wasn't free, though: blank lines are cosmetic to every other tool, and a round-trip through a builder stripped one and silently changed what a modifier bound to. Hence the advice to name a container when the boundary matters.
+**No group syntax.** A blank line already separates blocks in Markdown. Borrowing that beats inventing a parallel shape, which would cost a rule and a new way to be wrong. Same reason globals behave like a stylesheet, and `on hover` is a word rather than `:hover`. It wasn't free, though: blank lines are cosmetic to every other tool, and a round-trip through a builder stripped one and silently changed what a modifier bound to. Hence the advice to name a container when the boundary matters.
 
 > Blackwell, A.F. et al. (2001). [Cognitive Dimensions of Notations](https://www.cl.cam.ac.uk/~afb21/publications/CT2001.pdf). *Cognitive Technology 2001*, LNCS 2117, 325–341.
 
