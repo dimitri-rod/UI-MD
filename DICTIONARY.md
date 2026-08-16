@@ -6,8 +6,8 @@ Every entity in Markdown has exactly one meaning here. Nothing is reserved,
 nothing is forbidden, nothing renders as a surprise. Six shapes are additions —
 Markdown had no button, input, tag, note, token or icon.
 
-**A line that is entirely one shape is that shape. Inside a line of prose,
-everything is text.** So `*ghost, 14px*` alone on a line is a rule, `*really*`
+A line that is entirely one shape is that shape. Inside a line of prose,
+everything is text. So `*ghost, 14px*` alone on a line is a rule, `*really*`
 inside a sentence is italic, `(Draft)` alone is a tag, and
 `Free forever (for one project)` is a sentence.
 
@@ -59,7 +59,7 @@ inside a sentence is italic, `(Draft)` alone is a tag, and
 
 ## Structure
 
-**A `>` line is a container if deeper lines follow it, content if they don't.**
+A `>` line is a container if deeper lines follow it, content if they don't.
 `>> Pro Card` with `>>>` lines under it is a container named Pro Card;
 `>>> Free forever, for one project.` is a line of body copy.
 
@@ -68,7 +68,7 @@ layout is two named containers at the same depth.
 
 ## Rules
 
-**A rule attaches to the element above it. Never below.** The element is a
+A rule attaches to the element above it. Never below. The element is a
 line, a list, a table or a container — whichever ends directly above the rule.
 Containers pass their rules down. Rules stack: several in a row all attach to
 the one element above the stack.
@@ -92,7 +92,7 @@ it yet. If an edit replaces one with a literal, say so.
 Globals first, then the tree in order. Fill in unspecified detail; don't invent
 content or sections that weren't written.
 
-**One written item is a pattern.** Where content repeats — FAQ entries, table
+One written item is a pattern. Where content repeats — FAQ entries, table
 rows, cards in a feed — write one and fill the rest. The note controls how far:
 `// six or so` invites invention, `// exactly these four: Nike, Google, Oura,
 Patagonia` forbids it. Use the forbidding form for anything named, where a
