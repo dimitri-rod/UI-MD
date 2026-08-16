@@ -13,8 +13,9 @@ The model isn't bad at design. You have no way to point.
 
 ## What it is
 
-UI-MD is a dictionary. Fifteen shapes, all of them ordinary Markdown, each
-assigned exactly one meaning in an interface.
+UI-MD is a dictionary. Every entity in Markdown, assigned exactly one meaning
+in an interface, plus six shapes Markdown didn't have — button, input, tag,
+note, token, icon.
 
 You describe a screen in plain text. A model builds it — React, HTML, Figma,
 whatever you ask for. Later, when you want to change one thing, you point at it
@@ -103,13 +104,11 @@ Three reasons, none of them aesthetic.
 free. You aren't teaching a parser; you're using notation the model already
 understands deeply, then narrowing what a few characters mean.
 
-**It renders, and that's a bonus rather than a rule.** A UI-MD file previewed
-on GitHub is a legible low-fi wireframe — headings, lists, tables, images and
-checkboxes all appear as themselves, so anyone can review a screen in a pull
-request with no tooling installed. But meaning is defined in the dictionary and
-nowhere else. No shape means what it means because a renderer says so. Where
-keeping the preview honest is free, the dictionary says how; where it would
-cost a rule, the preview loses.
+**It renders.** A UI-MD file previewed on GitHub is a legible low-fi
+wireframe — headings, lists, tables, images and checkboxes all appear as
+themselves. Anyone can review a screen in a pull request with no tooling
+installed. This holds because the dictionary is complete: every Markdown entity
+has a meaning, so nothing in a file is a construct the format didn't plan for.
 
 **It's typeable.** No canvas, no plugin, no editor, no account. A text file in
 whatever you already have open. Version-controlled, diffable, greppable,
@@ -158,7 +157,7 @@ much.
 
 Write the screen. Get it built. Point at one piece. Change it.
 
-Fifteen shapes. The rules are just talking. The file renders as a wireframe,
+One meaning per entity. The rules are just talking. The file renders as a wireframe,
 versions like code, and stays readable by both parties for as long as anyone
 bothers to keep it true.
 
