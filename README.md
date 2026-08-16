@@ -1,61 +1,152 @@
 # UI-MD
 
-Designing with an LLM is a conversation with someone who can't see what
-you're looking at.
+Designing with LLMs can be annoying.
 
-You describe a screen. It builds something. It's close. You want the button in
-the middle pricing card to be quieter — not the other two, that one. So you
-write a paragraph locating it. *The call-to-action in the highlighted plan, the
-one in the middle, not the header button.* The model reads your paragraph,
-guesses, and changes the wrong button.
+Every message written in prose starts from zero. If a screen comes back 70%
+right, fixing it costs a paragraph saying *which* before a few words saying
+*what*.
 
-The model isn't bad at design. You have no way to point.
+UI-MD is a handful of characters you already know from Markdown.
 
-## What it is
-
-UI-MD is a dictionary. Every entity in Markdown, assigned exactly one meaning
-in an interface, plus six shapes Markdown didn't have — button, input, tag,
-note, token, icon.
-
-You describe a screen in plain text. A model builds it — React, HTML, Figma,
-whatever you ask for. Later, when you want to change one thing, you point at it
-by reading its path off the same file.
-
-The file is the brief and the map. That's the whole idea.
-
-The syntax is [DICTIONARY.md](DICTIONARY.md), and it is the only place the
-syntax lives.
-
-## Two halves, deliberately unequal
-
-Shapes are structure. A `>` opens a container, and each extra `>` goes one
-level deeper. `[[Button]]` is a button. `[ ]` is an unchecked box. These are
-strict. Miscount a `>` and the tree is wrong, the same way a misplaced brace
-breaks code.
-
-Rules are prose. Everything about how a thing looks lives between
-asterisks, in whatever words you have.
+It provides a structure for prompting. Set a unique name for each component and
+start building. Titles, buttons, labels, links and rules. Later, just say the
+component name and edit without touching anything else.
 
 ```
-*padding 14px 28px, radius 8px, background {Color,Accent 1}*
+> Pricing
+>> Pro Card
+*bordered, slightly larger than the others*
+>>> ### Pro
+>>> $29/month, unlimited projects.
+>>> [[Get Started]][signup]
 ```
 
-```
-*irresistible, warm, makes you want to click without thinking*
-```
-
-Both are valid. Both work. The model translates, not you. If you know the CSS
-word, use it — it's faster once it's second nature. If you don't, say it the
-way you'd say it out loud and keep moving.
-
-This split is the design. It means the strict part is small enough to learn in
-a minute, and the loose part is as expressive as your vocabulary. It also tells
-you which mistakes matter: get a `>` wrong and the screen is wrong; write *make
-it pop* and you've only been vague.
-
-## What it looks like
+Then, later:
 
 ```
+Pricing >> Pro Card: thicker border, glow on hover
+```
+
+Shapes are structure. Rules are prose. Every entity in Markdown has exactly one
+meaning here, plus six shapes Markdown didn't have — button, input, tag, note,
+token, icon. Models have read more Markdown than anything else, it previews on
+GitHub as a legible wireframe, and it's typeable anywhere.
+
+## The dictionary
+
+| IF | THEN |
+|:--|:--|
+| `> Name` | container. Each extra `>` goes one level deeper. No depth limit. |
+| any bare line | body copy — paragraph, subtitle or caption, by position |
+| `# H1` … `###### H6` | heading, six levels |
+| text under `===` | H1 |
+| text under `---` | H2 |
+| `---` `***` `___` after a blank line | divider |
+| `---` block at the very top | screen settings: route, theme, breakpoints |
+| `*rule*` | rule for the element above |
+| `**rule**` `***rule***` | rule for the whole screen |
+| `_rule_` | breakpoint or state, element above |
+| `__rule__` | breakpoint or state, whole screen |
+| `*text*` in prose | italic |
+| `**text**` in prose | bold |
+| `***text***` in prose | bold italic |
+| `~~text~~` in prose | struck out — an old price, a dropped feature |
+| `` `text` `` | literal. Keep exactly, don't reword. |
+| `\` | the next character is literal |
+| `&entity;` | the character it names |
+| two trailing spaces | line break inside one element |
+| `[^1]` + `[^1]: text` | footnote — fine print, legal line |
+| `- item` | item in a set — nav links, features, anything that repeats |
+| `- item` indented | item in a subset — a dropdown |
+| `1. item` | item in an ordered sequence — steps, a wizard |
+| set with blank lines between items | the same set, spaced out |
+| `[x] Item` / `[ ] Item` | checked / unchecked. As a set, multi-select unless `*single-select*`. |
+| `[Link](url)` | text link. `#name` is a container in this file; no `https://` is a page in the same product. |
+| `[Link][name]` | link to a defined destination |
+| `[name]: /route` at the bottom | define a destination once, use `[name]` anywhere |
+| `<https://acme.com>` | external link, URL shown as its own text |
+| `![alt](image.jpg)` | image |
+| pipe table | grid or comparison — a pricing matrix |
+| `:--` `:-:` `--:` | column alignment, left / centre / right |
+| ` ``` ` fenced, or 4-space indent | data behind a repeat, or any block that isn't UI-MD |
+| `<tag>` | raw markup, passed through untouched |
+| `[[Button]]` | button |
+| `[[Button]](url)` `[[Button]][name]` | button that navigates |
+| `() Placeholder` | text input |
+| `(Label)` | tag. `*clickable, toggles active*` makes filters. |
+| `// note` | note for whoever builds this. Never becomes UI. |
+| `{Name,Variant}` | value from your design system |
+| `:icon-name:` | icon |
+
+## Rules
+
+A line that is entirely one shape is that shape. Inside a line of prose,
+everything is text. So `*ghost, 14px*` alone on a line is a rule, `*really*`
+inside a sentence is italic, `(Draft)` alone is a tag, and
+`Free forever (for one project)` is a sentence.
+
+A `>` line is a container if deeper lines follow it, content if they don't.
+Container names are yours to pick, and must be unique in the file.
+
+A rule attaches to the element above it, never below — a line, a list, a table
+or a container. Containers pass rules down. Rules stack. To rule several things
+at once, make them a set.
+
+```
+>> - [Pricing][pricing]
+   - [FAQ][faq]
+*ghost, 14px, gap 24px*
+```
+
+Local beats global, later beats earlier, children inherit. A `{Token}` is a
+binding, not a value — if an edit replaces one with a literal, say so.
+
+## Pointing
+
+Walk the same path you wrote. `#2` picks the second match when siblings are
+identical.
+
+```
+Hero >> [[Start Free Trial]]
+Pricing >> [[Get Started]] #2
+Hero >> [[Start Free Trial]] _on mobile_
+```
+
+Only that element changes. Update the file after, in the rule that owns the
+element — never in a `// note`, which never becomes UI.
+
+## Building
+
+Globals first, then the tree in order. Fill in unspecified detail; don't invent
+content or sections that weren't written.
+
+One written item is a pattern. Where content repeats, write one and fill the
+rest. The note controls how far: `// six or so` invites invention,
+`// exactly these four: Nike, Google, Oura, Patagonia` forbids it.
+
+## Example
+
+```
+---
+route: /
+theme: dark
+---
+
+**{Color,Background} #0A0A0F, {Color,Surface} #14141C, {Color,Text} #E8E6F0**
+**{Color,Accent 1} #7C3AED, {Color,Accent 2} #22D3EE**
+**{Font,Heading} "Playfair Display" serif, {Font,Body} "Inter" sans-serif**
+__on mobile: stack everything, padding 24px__
+
+> Navbar
+*sticky top, space-between, padding 20px 5%, background {Color,Background}*
+>> UI-MD
+*confident, like it knows what it's doing*
+>> - [Pricing][pricing]
+   - [FAQ][faq]
+*ghost, 14px, gap 24px*
+>> [[Get Started]][signup]
+*background {Color,Accent 1}, padding 8px 20px, radius 8px*
+
 > Hero
 *deep breath energy — calm, centered, room to exist. max-width 800px, padding 120px 5%*
 >> # Design at the speed of thought.
@@ -66,104 +157,66 @@ it pop* and you've only been vague.
 *irresistible, warm, radius 8px, padding 14px 28px*
 _on mobile: full width_
 // fires trial_start, focus ring required
+>> ![Preview of a screen built in UI-MD](preview.png)
+*floaty, like it's hovering just above the page. radius 16px*
+
+---
+
+> Pricing
+*align center, padding 100px 5%, gap 32px*
+>> ## Simple, transparent pricing.
+*font-size 40px, weight 700, centered*
+>> - [x] Monthly
+   - [ ] Annual, save 20%
+*single-select, pill, satisfying to toggle*
+// flipping to Annual drops all three prices 20%
+
+| Plan | Price | Projects | |
+|:--|--:|--:|--|
+| Developer | Free | 1 | [[Get Started]][signup] |
+| Pro | ~~$39~~ $29 | Unlimited | [[Get Started]][signup] |
+| Enterprise | Custom | Unlimited | [[Contact Sales]][contact] |
+*lift the Pro row — border 2px {Color,Accent 1}*
+
+> FAQ
+*calm, centered, breathing room. padding 80px 5%*
+>> ## Frequently asked questions.
+*font-size 32px, weight 700, centered*
+>> () Search questions...
+*width 400px, radius 8px, inviting, not demanding*
+>> - (All)
+   - (Billing)
+   - (Setup)
+   - (API)
+*clickable, toggles active, pill-shaped, the picked one lights up with {Color,Accent 1}*
+>> Can I switch between monthly and annual billing?
+*accordion, one open at a time, border-bottom 1px {Color,Surface}*
+// six or so, spanning billing, setup and API
+
+> Footer
+*space-between, padding 60px 5%, border-top 1px {Color,Surface}, fading out gently*
+>> Acme Corp © 2026. All rights reserved.[^terms]
+*opacity 50%, 14px*
+>> :twitter: :github: :discord:
+*gap 16px, color {Color,Accent 1}, tucked away, not asking for attention*
+
+[^terms]: Prices exclude VAT. Annual billing renews automatically.
+
+[pricing]: #pricing
+[faq]: #faq
+[signup]: /auth/signup
+[contact]: /sales/contact
 ```
 
-A container. A heading. A line of body copy. A button that navigates to a
-destination defined once at the bottom of the file. A rule for one breakpoint.
-A note for whoever builds it, which never becomes UI.
+## Limits
 
-Nothing here needs explaining to a designer, and nothing here needs parsing
-help from a model. Both sides already read Markdown.
+- Structure is reproducible. Styling is interpreted — two runs will differ.
+- No round-trip. Once a model emits React, the code and the file diverge.
+- Paths are names, not IDs. Rename a container and every pointer stops matching.
+- No component reuse. Defining a card once and calling it elsewhere needs a new
+  sigil and a resolution order. Left open on purpose.
 
-## Pointing
+Why it's shaped this way: [RATIONALE.md](RATIONALE.md).
 
-Once a screen exists, you address any piece of it by walking the same path you
-wrote.
-
-```
-Hero >> [[Start Free Trial]]
-```
-
-The button, inside the hero. No paragraph. No hedging about which one.
-
-When several siblings look identical — a `[[Get Started]]` on every row of a
-pricing table — you index.
-
-```
-Pricing >> [[Get Started]] #2
-```
-
-This is the part that changes how it feels to work. Editing stops being
-re-describing. You read the coordinate off the file and say what should change.
-
-## Why Markdown, specifically
-
-Three reasons, none of them aesthetic.
-
-Models have read more Markdown than any other format. Structure comes for
-free. You aren't teaching a parser; you're using notation the model already
-understands deeply, then narrowing what a few characters mean.
-
-It renders. A UI-MD file previewed on GitHub is a legible low-fi
-wireframe — headings, lists, tables, images and checkboxes all appear as
-themselves. Anyone can review a screen in a pull request with no tooling
-installed. This holds because the dictionary is complete: every Markdown entity
-has a meaning, so nothing in a file is a construct the format didn't plan for.
-
-It's typeable. No canvas, no plugin, no editor, no account. A text file in
-whatever you already have open. Version-controlled, diffable, greppable,
-pasteable into any chat window.
-
-## What it doesn't do
-
-It isn't a design tool, and it isn't trying to replace one. It produces a first
-draft of a screen that doesn't exist yet, fast, in a form both a person and a
-model can hold in their head.
-
-It isn't precise about looks. Structure is reproducible — depth, order, and
-membership survive every generation. Styling is interpreted, and two runs will
-differ. The file looks like a spec, which makes it tempting to trust like one.
-It's exact in layout and approximate in appearance.
-
-It doesn't round-trip. The moment a model turns UI-MD into React, the two
-diverge. Developers edit the code, designers edit the `.md`, and within a week
-neither describes the product. UI-MD relocates that problem rather than solving
-it. It's most valuable at the beginning of a screen's life and progressively
-less so as the screen ages.
-
-Paths are names, not identifiers. Rename a container or reword a button and
-every pointer to it silently stops matching.
-
-There's no component reuse. Defining a card once and calling it elsewhere needs
-a new sigil and a resolution order — real power, at the cost of the thing that
-makes this typeable. Left open on purpose.
-
-None of these are secret. Knowing them is the difference between using the
-format well and being disappointed by it.
-
-## Who it's for
-
-Anyone who describes interfaces to a machine and is tired of describing the
-same interface twice.
-
-Designers who think in screens and want a first build without opening a design
-tool. Product people who can specify a page but not draw one. Engineers who
-want the brief in the repo instead of in a comment thread. Anyone iterating
-with a model who has noticed that the second request is always harder than the
-first, because the first had no context to point at and the second has too
-much.
-
-## The shortest version
-
-Write the screen. Get it built. Point at one piece. Change it.
-
-One meaning per entity. The rules are just talking. The file renders as a wireframe,
-versions like code, and stays readable by both parties for as long as anyone
-bothers to keep it true.
-
-That last part is on you. Everything else the format handles.
-
-***
-
-[DICTIONARY.md](DICTIONARY.md) — the syntax, and the only copy of it.
-[RATIONALE.md](RATIONALE.md) — why it's shaped this way.
+No IDs, no schema, no parser, no validator. If a shape doesn't make something
+shorter or clearer, it isn't here.
