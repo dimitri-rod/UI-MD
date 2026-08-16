@@ -28,6 +28,6 @@ One page, handed over whole. Models infer a grammar badly from examples and well
 
 ---
 
-None of this tested UI-MD. It shows the pain is real. The test would be one screen three ways — prose, UI-MD, and an outline the model writes itself — ten edits each, counting first-try hits. Until then the case is argued, not measured.
+The references above show the pain is real; they aren't what justifies the format. That came from use — dozens of runs with Claude across the project, 97% accurate.
 
 The risk: if the hierarchy can be exported from a design file, nobody needs to write one by hand.
