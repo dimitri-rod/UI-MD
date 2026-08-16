@@ -28,12 +28,12 @@ syntax lives.
 
 ## Two halves, deliberately unequal
 
-**Shapes are structure.** A `>` opens a container, and each extra `>` goes one
+Shapes are structure. A `>` opens a container, and each extra `>` goes one
 level deeper. `[[Button]]` is a button. `[ ]` is an unchecked box. These are
 strict. Miscount a `>` and the tree is wrong, the same way a misplaced brace
 breaks code.
 
-**Rules are prose.** Everything about how a thing looks lives between
+Rules are prose. Everything about how a thing looks lives between
 asterisks, in whatever words you have.
 
 ```
@@ -100,17 +100,17 @@ re-describing. You read the coordinate off the file and say what should change.
 
 Three reasons, none of them aesthetic.
 
-**Models have read more Markdown than any other format.** Structure comes for
+Models have read more Markdown than any other format. Structure comes for
 free. You aren't teaching a parser; you're using notation the model already
 understands deeply, then narrowing what a few characters mean.
 
-**It renders.** A UI-MD file previewed on GitHub is a legible low-fi
+It renders. A UI-MD file previewed on GitHub is a legible low-fi
 wireframe — headings, lists, tables, images and checkboxes all appear as
 themselves. Anyone can review a screen in a pull request with no tooling
 installed. This holds because the dictionary is complete: every Markdown entity
 has a meaning, so nothing in a file is a construct the format didn't plan for.
 
-**It's typeable.** No canvas, no plugin, no editor, no account. A text file in
+It's typeable. No canvas, no plugin, no editor, no account. A text file in
 whatever you already have open. Version-controlled, diffable, greppable,
 pasteable into any chat window.
 
